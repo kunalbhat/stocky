@@ -1,0 +1,38 @@
+body {
+  color: #111;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  li {
+    background-color: #27AE60;
+    color: #fff;
+    list-style-type: none;
+    padding: 20px;
+
+    &.loss {
+      background-color: #2C3E50;
+    }
+  }
+}
+
+strong {
+  font-size: 14px;
+}
+
+p {
+  font-size: 36px;
+  font-weight: lighter;
+  margin: 0;
+}

@@ -9,14 +9,18 @@ get '/style.css' do
 end
 
 get '/' do
-  @quotes = Stock.all
-  @stocks = Hash.new
+  @symbols = Stock.all
 
-  @quotes.each do |quote|
-    symbol = quote.symbol
+  stocks = []
+  StockPrice = Struct.new(:symbol, :price, :change)
+
+  @symbols.each do |symbol|
+    symbol = symbol.symbol
     price = MarketBeat.last_trade_real_time symbol
+    change_and_percent_change = MarketBeat.change_and_percent_change symbol
 
-    @stocks[symbol] = price
+    stock = StockPrice.new(symbol, price, change_and_percent_change)
+    @stocks = stocks.push(stock)
   end
 
   haml :show

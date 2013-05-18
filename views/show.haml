@@ -1,6 +1,8 @@
 %ul
-  - @stocks.each do |symbol, price|
-    %li
-      = symbol
-      %em
-        = price
+  - @stocks.each do |stock|
+    - if (stock.change.first).to_f < 0
+      - change = 'loss'
+
+    %li{ class: "#{change}" }
+      %strong= stock.symbol
+      %p.stock-price= stock.price
