@@ -12,6 +12,9 @@
     %link{ href: '/style.css', rel: 'stylesheet' }
   %body
     .container
+      %header.title-bar
+        %nav#menu.menu
+        #add-symbol.add-symbol
       = yield
 
   %script{ src: '//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js' }
@@ -19,3 +22,9 @@
   :coffee
     $('.settings').click ->
       $(this).parent('.stock-info-wrapper').toggleClass('show-settings')
+
+    $('#add-symbol').click ->
+      $('.stock-list .add-symbol-wrapper').toggleClass('visible')
+
+    $('#menu').click ->
+      $('.container').toggleClass('activate-menu')

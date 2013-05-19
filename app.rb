@@ -26,4 +26,10 @@ get '/' do
   haml :show
 end
 
+post '/stocks/new' do
+  Stock.new(symbol: params[:stock_symbol]).save
+
+  redirect '/'
+end
+
 require_relative 'models/stock'

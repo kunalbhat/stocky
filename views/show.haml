@@ -1,8 +1,8 @@
-%header.title-bar
-  %nav.menu
-  .add-symbol
+%ul.stock-list
+  .add-symbol-wrapper
+    %form.add-symbol-form{ action: '/stocks/new', method: 'post' }
+      %input{ name: 'stock_symbol', placeholder: 'Symbol', type: 'text' }
 
-%ul
   - @stocks.each do |stock|
     - if (stock.change.first).to_f < 0
       - change = 'loss'
@@ -15,4 +15,5 @@
             = stock.price
             %span= stock.change[1]
         .settings
-      .stock-setings-drawer
+      .settings-drawer
+        .remove
