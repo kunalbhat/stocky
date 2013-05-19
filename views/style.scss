@@ -1,4 +1,16 @@
+@font-face {
+  font-family: "SSStandard";
+  src: url('webfonts/ss-standard.eot');
+  src: url('webfonts/ss-standard.eot?#iefix') format('embedded-opentype'),
+       url('webfonts/ss-standard.woff') format('woff'),
+       url('webfonts/ss-standard.ttf')  format('truetype'),
+       url('webfonts/ss-standard.svg#SSStandard') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
+  background-color: darken(#2C3E50, 10%);
   color: #111;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -6,24 +18,134 @@ body {
   padding: 0;
 }
 
-.container {
+.title-bar {
+  background-color: darken(#2C3E50, 10%);
+  box-sizing: border-box;
+  color: #ecf0f1;
+  overflow: hidden;
+  padding: 20px;
+  position: relative;
+  width: 100%;
 
+  .menu {
+    float: left;
+    text-align: left;
+    width: 50%;
+
+    &:after {
+      color: lighten(#2C3E50, 25%);
+      content: "\E9A1";
+      cursor: pointer;
+      font-family: "SSStandard";
+    }
+
+    &:hover {
+      &:after {
+        color: #ecf0f1;
+      }
+    }
+  }
+
+  .add-symbol {
+    float: right;
+    text-align: right;
+    width: 50%;
+
+    &:after {
+      color: lighten(#2C3E50, 25%);
+      content: "\002B";
+      cursor: pointer;
+      font-family: "SSStandard";
+    }
+
+    &:hover {
+      &:after {
+        color: #ecf0f1;
+      }
+    }
+  }
 }
 
 ul {
   margin: 0;
   padding: 0;
-  width: 100%;
 
   li {
     background-color: #27AE60;
+    border-bottom: 1px solid darken(#27AE60, 10%);
+    box-sizing: border-box;
     color: #fff;
     list-style-type: none;
     padding: 20px;
 
-    &.loss {
-      background-color: #2C3E50;
+    .stock-info-wrapper {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+
+      -webkit-transition: width 0.2s ease-in-out;
+         -moz-transition: width 0.2s ease-in-out;
+              transition: width 0.2s ease-in-out;
     }
+
+    &:hover {
+      background-color: darken(#27AE60, 10%);
+
+      &:after {
+        display: none;
+      }
+
+      .settings {
+        display: block;
+      }
+    }
+
+    &.show-settings {
+      width: 90%;
+    }
+
+    .stock-info {
+      float: left;
+    }
+
+    &:after {
+      color: #2ecc71;
+      content: "\25B4";
+      font-family: "SSStandard";
+      position: absolute;
+      right: 20px;
+      top: 45px;
+    }
+
+    &.loss {
+      background-color: #2c3e50;
+      border-bottom: 1px solid darken(#2c3e50, 10%);
+
+      &:hover {
+        background-color: darken(#2C3E50, 5%);
+      }
+
+      &:after {
+        color: #E74C3C;
+        content: "\25BE";
+      }
+    }
+  }
+}
+
+.settings {
+  cursor: pointer;
+  display: none;
+  height: 36px;
+  position: absolute;
+  right: 0;
+  top: 45px;
+  width: 36px;
+
+  &:after {
+    color: #2ECC71;
+    content: "\2699";
+    font-family: "SSStandard";
   }
 }
 
@@ -35,4 +157,12 @@ p {
   font-size: 36px;
   font-weight: lighter;
   margin: 0;
+
+  span {
+    font-size: 18px;
+  }
+}
+
+.remove {
+
 }
