@@ -5,9 +5,9 @@
 
   - @stocks.each do |stock|
     - if (stock.change.first).to_f < 0
-      - change = 'loss'
+      - status = 'loss'
 
-    %li{ class: "#{change}" }
+    %li{ class: "#{status}" }
       .stock-info-wrapper
         .stock-info
           %strong= stock.symbol
@@ -19,4 +19,6 @@
       .stock-detail-content
         %h5 Open
         %p= stock.opening_price
+
+        %h5 Trend
         %p= stock.ticker_trend
