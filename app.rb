@@ -1,32 +1,30 @@
 require 'bundler'
+require 'json'
 
 Bundler.require
 
 DataMapper.setup(:default, "sqlite:///#{[Dir.pwd, '/db/stocks.db'].join}")
+
+require_relative 'services/stock_info'
+require_relative 'models/stock'
 
 get '/style.css' do
   scss :style
 end
 
 get '/' do
-  @symbols = Stock.all
+  @stock_results = []
 
-  stocks = []
-  StockPrice = Struct.new(:id, :symbol, :price, :change, :opening_price, :ticker_trend)
-
-  @symbols.each do |symbol|
-    id = symbol.id
-    symbol = symbol.symbol
-    price = MarketBeat.last_trade_real_time symbol
-    change_and_percent_change = MarketBeat.change_and_percent_change symbol
-    opening_price = MarketBeat.opening_price symbol
-    ticker_trend = MarketBeat.ticker_trend symbol
-
-    stock = StockPrice.new(id, symbol, price, change_and_percent_change, opening_price, ticker_trend)
-    @stocks = stocks.push(stock)
+  Stock.all.each do |stock|
+    @stock_results << StockInfo.new(stock.symbol)
   end
 
   haml :show
+end
+
+get '/stocks/:symbol' do
+  content_type :json
+  StockInfo.new(params[:symbol]).to_hash.to_json
 end
 
 post '/stocks/new' do
@@ -40,5 +38,3 @@ delete '/stocks/:id' do |id|
     stock.destroy
   end
 end
-
-require_relative 'models/stock'

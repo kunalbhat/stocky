@@ -3,8 +3,8 @@
     %form.add-symbol-form{ action: '/stocks/new', method: 'post' }
       %input{ name: 'stock_symbol', placeholder: 'Symbol', type: 'text' }
 
-  - @stocks.each do |stock|
-    - if (stock.change.first).to_f < 0
+  - @stock_results.each do |stock|
+    - if stock.point_change.to_f < 0
       - status = 'loss'
 
     %li{ class: "#{status}" }
@@ -12,10 +12,10 @@
         .stock-info
           %strong= stock.symbol
           %p.stock-price
-            = stock.price
-            %span= stock.change[1]
+            = stock.last_price
+            %span= stock.percent_change
         .stock-tools
-          .remove{ id: "#{stock.id}" }
+          .remove
       .stock-detail-content
         %h5 Open
         %p= stock.opening_price
