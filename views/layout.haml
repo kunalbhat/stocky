@@ -20,11 +20,24 @@
   %script{ src: '//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js' }
 
   :coffee
+    $('.stock-list li').click ->
+      $(@).toggleClass('expand')
+
     $('.settings').click ->
-      $(this).parent('.stock-info-wrapper').toggleClass('show-settings')
+      $(@).parent('.stock-info-wrapper').toggleClass('show-settings')
 
     $('#add-symbol').click ->
       $('.stock-list .add-symbol-wrapper').toggleClass('visible')
 
-    $('#menu').click ->
-      $('.container').toggleClass('activate-menu')
+    #$('#menu').click ->
+    #  $('.container').toggleClass('activate-menu')
+
+    $('.remove').click ->
+      id = $(this).attr('id')
+      $(this).parent('li').hide()
+      $.ajax({
+        type: 'DELETE'
+        url: '/stocks/' + id
+      }).done ->
+        window.location.replace('/')
+      return false

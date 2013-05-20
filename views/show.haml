@@ -14,6 +14,8 @@
           %p.stock-price
             = stock.price
             %span= stock.change[1]
-        .settings
-      .settings-drawer
-        .remove
+        .stock-tools
+          .remove{ id: "#{stock.id}" }
+      .stock-detail-content
+        %h5 Open
+        %p= stock.opening_price

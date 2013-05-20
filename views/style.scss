@@ -14,6 +14,10 @@ $color_text_wet_asphalt: #34495e;
   font-style: normal;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
 body {
   background-color: darken(#2C3E50, 10%);
   color: #111;
@@ -24,6 +28,7 @@ body {
 }
 
 .container {
+  overflow: hidden;
   position: relative;
   left: 0;
 
@@ -90,10 +95,15 @@ ul {
 
   li {
     box-sizing: border-box;
+    height: 100px;
     list-style-type: none;
-    max-height: 100px;
+    overflow: hidden;
     position: relative;
     width: 100%;
+
+    -webkit-transition: height 0.2s ease-in-out;
+       -moz-transition: height 0.2s ease-in-out;
+            transition: height 0.2s ease-in-out;
 
     &.loss {
       .stock-info-wrapper {
@@ -110,10 +120,28 @@ ul {
         }
       }
     }
+
+    .stock-detail-content {
+      background-color: darken(#2C3E50, 10%);
+      box-sizing: border-box;
+      color: #efefef;
+      height: 300px;
+      padding: 20px;
+      width: 100%;
+    }
+
+    &.expand {
+      height: 400px;
+    }
+  }
+
+  .stock-tools {
+    float: left;
+    display: none;
   }
 
   .add-symbol-wrapper {
-    background-color: darken(#2C3E50, 10%);
+    background-color: darken(#2c3e50, 10%);
     border-bottom: 1px solid darken(#2c3e50, 20%);
     box-sizing: border-box;
     height: 0;
@@ -157,8 +185,10 @@ ul {
     border-bottom: 1px solid darken(#27AE60, 10%);
     box-sizing: border-box;
     color: #fff;
+    cursor: pointer;
     display: inline-block;
     height: 100px;
+    max-height: 100px;
     overflow: hidden;
     position: relative;
     padding: 20px;
@@ -169,14 +199,14 @@ ul {
        -moz-transition: width 0.2s ease-in-out;
             transition: width 0.2s ease-in-out;
 
-    &:hover {
+    &:hover, &:active {
       background-color: darken(#27AE60, 10%);
 
       &:after {
         display: none;
       }
 
-      .settings {
+      .settings, .stock-tools {
         display: block;
       }
     }
@@ -227,7 +257,7 @@ ul {
   width: 36px;
 
   &:after {
-    color: #2ECC71;
+    color: #efefef;
     content: "\2699";
     font-family: "SSStandard";
   }
@@ -256,7 +286,7 @@ p {
   width: 36px;
 
   &:after {
-    color: #bdc3c7;
+    color: #fff;
     content: "\2421";
     font-family: "SSStandard";
   }

@@ -12,14 +12,16 @@ get '/' do
   @symbols = Stock.all
 
   stocks = []
-  StockPrice = Struct.new(:symbol, :price, :change)
+  StockPrice = Struct.new(:id, :symbol, :price, :change, :opening_price)
 
   @symbols.each do |symbol|
+    id = symbol.id
     symbol = symbol.symbol
     price = MarketBeat.last_trade_real_time symbol
     change_and_percent_change = MarketBeat.change_and_percent_change symbol
+    opening_price = MarketBeat.opening_price symbol
 
-    stock = StockPrice.new(symbol, price, change_and_percent_change)
+    stock = StockPrice.new(id, symbol, price, change_and_percent_change, opening_price)
     @stocks = stocks.push(stock)
   end
 
@@ -29,6 +31,13 @@ end
 post '/stocks/new' do
   Stock.new(symbol: params[:stock_symbol]).save
 
+  redirect '/'
+end
+
+delete '/stocks/:id' do |id|
+  if stock = Stock.get(params[:id].to_i)
+    stock.destroy
+  end
   redirect '/'
 end
 
