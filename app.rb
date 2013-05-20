@@ -12,7 +12,7 @@ get '/' do
   @symbols = Stock.all
 
   stocks = []
-  StockPrice = Struct.new(:id, :symbol, :price, :change, :opening_price, :notes)
+  StockPrice = Struct.new(:id, :symbol, :price, :change, :opening_price, :ticker_trend)
 
   @symbols.each do |symbol|
     id = symbol.id
@@ -20,9 +20,9 @@ get '/' do
     price = MarketBeat.last_trade_real_time symbol
     change_and_percent_change = MarketBeat.change_and_percent_change symbol
     opening_price = MarketBeat.opening_price symbol
-    notes = MarketBeat.ticker_trend symbol
+    ticker_trend = MarketBeat.ticker_trend symbol
 
-    stock = StockPrice.new(id, symbol, price, change_and_percent_change, opening_price, notes)
+    stock = StockPrice.new(id, symbol, price, change_and_percent_change, opening_price, ticker_trend)
     @stocks = stocks.push(stock)
   end
 
