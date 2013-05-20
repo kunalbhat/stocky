@@ -12,7 +12,7 @@ get '/' do
   @symbols = Stock.all
 
   stocks = []
-  StockPrice = Struct.new(:id, :symbol, :price, :change, :opening_price)
+  StockPrice = Struct.new(:id, :symbol, :price, :change, :opening_price, :notes)
 
   @symbols.each do |symbol|
     id = symbol.id
@@ -20,8 +20,9 @@ get '/' do
     price = MarketBeat.last_trade_real_time symbol
     change_and_percent_change = MarketBeat.change_and_percent_change symbol
     opening_price = MarketBeat.opening_price symbol
+    notes = MarketBeat.ticker_trend symbol
 
-    stock = StockPrice.new(id, symbol, price, change_and_percent_change, opening_price)
+    stock = StockPrice.new(id, symbol, price, change_and_percent_change, opening_price, notes)
     @stocks = stocks.push(stock)
   end
 
@@ -38,7 +39,6 @@ delete '/stocks/:id' do |id|
   if stock = Stock.get(params[:id].to_i)
     stock.destroy
   end
-  redirect '/'
 end
 
 require_relative 'models/stock'
