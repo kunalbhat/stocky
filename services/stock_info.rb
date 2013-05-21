@@ -11,7 +11,12 @@ class StockInfo
       opening_price:  opening_price,
       ticker_trend:   ticker_trend,
       point_change:   point_change,
-      percent_change: percent_change }
+      percent_change: percent_change,
+      status:         status }
+  end
+
+  def status
+    point_change.to_f < 0 ? 'loss' : 'gain'
   end
 
   def point_change

@@ -1,24 +1,4 @@
 %ul.stock-list
   .add-symbol-wrapper
-    %form.add-symbol-form{ action: '/stocks/new', method: 'post' }
+    %form#add-symbol-form.add-symbol-form
       %input{ name: 'stock_symbol', placeholder: 'Symbol', type: 'text' }
-
-  - @stock_results.each do |stock|
-    - if stock.point_change.to_f < 0
-      - status = 'loss'
-
-    %li{ class: "#{status}" }
-      .stock-info-wrapper
-        .stock-info
-          %strong= stock.symbol
-          %p.stock-price
-            = stock.last_price
-            %span= stock.percent_change
-        .stock-tools
-          .remove
-      .stock-detail-content
-        %h5 Open
-        %p= stock.opening_price
-
-        %h5 Trend
-        %p= stock.ticker_trend

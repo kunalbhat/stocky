@@ -15,14 +15,14 @@ end
 get '/' do
   @stock_results = []
 
-  Stock.all.each do |stock|
-    @stock_results << StockInfo.new(stock.symbol)
-  end
+  #Stock.all.each do |stock|
+  #  @stock_results << StockInfo.new(stock.symbol)
+  #end
 
   haml :show
 end
 
-get '/stocks/:symbol' do
+get '/stocks' do
   content_type :json
   StockInfo.new(params[:symbol]).to_hash.to_json
 end
@@ -34,7 +34,7 @@ post '/stocks/new' do
 end
 
 delete '/stocks/:id' do |id|
-  if stock = Stock.get(params[:id].to_i)
+  if stock = Stock.get(params[:id])
     stock.destroy
   end
 end

@@ -18,10 +18,43 @@
       = yield
 
   %script{ src: '//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js' }
+  %script{ src: 'http://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.js' }
+  %script{ src: '/javascripts/handlebar.js' }
+
+  /%li{name: '{{symbol}}', class: '{{status}}'}
+  %script{type: 'text/x-handlebars-template', id: 'stock-template'}
+    .stock-info-wrapper
+      .stock-info
+        %strong {{symbol}}
+        %p.stock-price {{last_price}}
+      .stock-tools
+        .remove{name: '{{symbol}}'}
 
   :coffee
-    $('.stock-list li').click ->
-      $(@).toggleClass('expand')
+    if savedData = localStorage.getItem('stocks')
+      window.stocks = savedData.split(',')
+    else
+      window.stocks = []
+
+    source   = $("#stock-template").html()
+    template = Handlebars.compile(source)
+
+    _.each window.stocks, (symbol) ->
+      stock = {symbol: symbol, last_price: 'N/A'}
+      $('.stock-list').append('<li name = "' + stock.symbol + '">' + template(stock) + '</li>')
+
+      callback = (data) ->
+        $($('li[name=' + symbol + ']')[0]).html(template(data))
+        window.bindEvents()
+
+      $.ajax({
+        contentType: 'application/json',
+        tyoe: 'POST',
+        url: '/stocks',
+        data: { symbol: symbol },
+        dataType: 'json',
+        success: callback
+      })
 
     $('.settings').click ->
       $(@).parent('.stock-info-wrapper').toggleClass('show-settings')
@@ -29,15 +62,43 @@
     $('#add-symbol').click ->
       $('.stock-list .add-symbol-wrapper').toggleClass('visible')
 
-    #$('#menu').click ->
-    #  $('.container').toggleClass('activate-menu')
+    window.bindEvents =  ->
 
-    $('.remove').click ->
-      id = $(this).attr('id')
-      $(this).parent('li').hide()
-      $.ajax({
-        type: 'DELETE'
-        url: '/stocks/' + id
-      }).done ->
-        window.location.replace('/')
-      return false
+      $('.remove').click (e) ->
+        e.stopPropagation()
+        stock = $(e.currentTarget).attr('name')
+        window.stocks = _.reject(window.stocks, (symbol) -> symbol is stock)
+        localStorage.setItem('stocks', window.stocks)
+        $('li[name=' + stock + ']').remove()
+
+      $('.stock-list li').click (e) ->
+        $(@).toggleClass('expand')
+
+      $('#add-symbol-form').submit (event) ->
+        event.preventDefault()
+
+        symbol = $(this).find('input')[0].value
+
+        unless _.include(window.stocks, symbol)
+          window.stocks.push(symbol)
+          localStorage.setItem('stocks', window.stocks)
+
+          stock = {symbol: symbol, last_price: ''}
+          $('.stock-list').append('<li name = "' + stock.symbol + '">' + template(stock) + '</li>')
+
+          callback = (data) ->
+            $($('li[name=' + symbol + ']')[0]).html(template(data))
+            $('.stock-list').append()
+
+          $.ajax({
+            contentType: 'application/json',
+            url: '/stocks',
+            data: { symbol: symbol },
+            dataType: 'json',
+            success: callback
+          })
+
+          window.bindEvents()
+
+    $(-> window.bindEvents())
+
