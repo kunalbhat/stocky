@@ -35,13 +35,14 @@
       {{ticker_trend}}
 
   :coffee
-    $stockList = $('.stock-list')
-    lists = $stockList.size()
-
-    $($stockList[0]).addClass('active')
-
-    for i in [1..lists]
+    for x in [0..localStorage.length - 1]
+      key = localStorage.key(x)
+      $('#portfolio-list').append('<li>' + key + '</li>')
       $('.page-nav').append('<a class="nav-item" href="#"></a>')
+      $('#portfolios').append('<ul class="stock-list" id="' + key + '"></ul>')
+
+    $stockList = $('.stock-list')
+    $($stockList[0]).addClass('active')
 
     $($('.nav-item')[0]).addClass('active')
 
@@ -82,6 +83,9 @@
         success: callback
       })
 
+    $('#menu').click (e) ->
+      $('.menu-pane').toggleClass('visible')
+
     $('.settings').click ->
       $(@).parent('.stock-info-wrapper').toggleClass('show-settings')
 
@@ -91,6 +95,11 @@
     $('.stock-list li').click (e) ->
       $(@).toggleClass('expand')
 
+    $('#add-portfolio-form').submit (e) ->
+      e.preventDefault()
+      portfolio = $(@).children('input').val()
+
+      localStorage.setItem(portfolio, window.portfolio)
 
     window.bindEvents =  ->
 
