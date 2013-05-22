@@ -21,9 +21,8 @@
   %script{ src: 'http://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.js' }
   %script{ src: '/javascripts/handlebar.js' }
 
-  /%li{name: '{{symbol}}', class: '{{status}}'}
   %script{type: 'text/x-handlebars-template', id: 'stock-template'}
-    .stock-info-wrapper
+    .stock-info-wrapper{ class: '{{status}}' }
       .stock-info
         %strong {{symbol}}
         %p.stock-price {{last_price}}
@@ -40,8 +39,8 @@
     template = Handlebars.compile(source)
 
     _.each window.stocks, (symbol) ->
-      stock = {symbol: symbol, last_price: 'N/A'}
-      $('.stock-list').append('<li name = "' + stock.symbol + '">' + template(stock) + '</li>')
+      stock = {symbol: symbol, last_price: ''}
+      $('.stock-list').append('<li name="' + stock.symbol + '">' + template(stock) + '</li>')
 
       callback = (data) ->
         $($('li[name=' + symbol + ']')[0]).html(template(data))
@@ -84,7 +83,7 @@
           localStorage.setItem('stocks', window.stocks)
 
           stock = {symbol: symbol, last_price: ''}
-          $('.stock-list').append('<li name = "' + stock.symbol + '">' + template(stock) + '</li>')
+          $('.stock-list').append('<li name="' + stock.symbol + '">' + template(stock) + '</li>')
 
           callback = (data) ->
             $($('li[name=' + symbol + ']')[0]).html(template(data))

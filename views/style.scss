@@ -105,8 +105,8 @@ ul {
        -moz-transition: height 0.2s ease-in-out;
             transition: height 0.2s ease-in-out;
 
-    &.loss {
-      .stock-info-wrapper {
+    .stock-info-wrapper {
+      &.loss {
         background-color: #2C3E50;
         border-bottom: 1px solid darken(#2C3e50, 10%);
 
@@ -117,6 +117,15 @@ ul {
         &:after {
           color: #E74C3C;
           content: "\25BE";
+        }
+      }
+
+      &.gain {
+        background-color: #27AE60;
+        border-bottom: 1px solid darken(#27AE60, 10%);
+
+        &:hover {
+          background-color: darken(#27AE60, 10%);
         }
       }
     }
@@ -172,17 +181,17 @@ ul {
         text-transform: uppercase;
         width: 100%;
 
-        &::-webkit-input-placeholder { color: #2C3E50; }
-        &::-moz-placeholder          { color: #2C3E50; }
-        &:-moz-placeholder           { color: #2C3E50; }
-        &:-ms-input-placeholder      { color: #2C3E50; }
+        &::-webkit-input-placeholder { color: #2C3E50; text-transform: none; }
+        &::-moz-placeholder          { color: #2C3E50; text-transform: none; }
+        &:-moz-placeholder           { color: #2C3E50; text-transform: none; }
+        &:-ms-input-placeholder      { color: #2C3E50; text-transform: none; }
       }
     }
   }
 
   .stock-info-wrapper {
-    background-color: #27AE60;
-    border-bottom: 1px solid darken(#27AE60, 10%);
+    background-color: darken(#2c3e50, 15%);
+    border-bottom: 1px solid #34495e;
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
