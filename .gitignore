@@ -42,3 +42,8 @@ Thumbs.db
 ##########
 Gemfile.lock
 .sass-cache/*
+
+# Bundler
+bin
+vendor/ruby
+.bundle
