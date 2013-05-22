@@ -26,6 +26,7 @@
       .stock-info
         %strong {{symbol}}
         %p.stock-price {{last_price}}
+        %span.change {{change_}}
       .stock-tools
         .remove{name: '{{symbol}}'}
 
@@ -88,6 +89,7 @@
           callback = (data) ->
             $($('li[name=' + symbol + ']')[0]).html(template(data))
             $('.stock-list').append()
+            $('#add-symbol-form input').val('')
 
           $.ajax({
             contentType: 'application/json',
