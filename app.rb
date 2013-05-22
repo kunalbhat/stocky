@@ -5,6 +5,8 @@ Bundler.require
 
 require_relative 'services/stock_info'
 
+set :cache, Dalli::Client.new
+
 get '/style.css' do
   scss :style
 end
