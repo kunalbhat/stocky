@@ -3,22 +3,13 @@ require 'json'
 
 Bundler.require
 
-DataMapper.setup(:default, "sqlite:///#{[Dir.pwd, '/db/stocks.db'].join}")
-
 require_relative 'services/stock_info'
-require_relative 'models/stock'
 
 get '/style.css' do
   scss :style
 end
 
 get '/' do
-  @stock_results = []
-
-  #Stock.all.each do |stock|
-  #  @stock_results << StockInfo.new(stock.symbol)
-  #end
-
   haml :show
 end
 
