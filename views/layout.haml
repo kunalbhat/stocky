@@ -65,7 +65,9 @@
 
     _.each window.stocks, (symbol) ->
       stock = {symbol: symbol, last_price: ''}
-      $('#portfolio-one').append('<li name="' + stock.symbol + '">' + template(stock) + '</li>')
+      portfolio = $('.stock-list.active').attr('id')
+
+      $('#'+portfolio).append('<li name="' + stock.symbol + '">' + template(stock) + '</li>')
 
       callback = (data) ->
         $($('li[name=' + symbol + ']')[0]).html(template(data))
@@ -86,8 +88,9 @@
     $('#add-symbol').click ->
       $('.add-symbol-wrapper').toggleClass('visible')
 
-    $('#portfolio-one li').click (e) ->
+    $('.stock-list li').click (e) ->
       $(@).toggleClass('expand')
+
 
     window.bindEvents =  ->
 
@@ -101,6 +104,7 @@
       $('#add-symbol-form').submit (event) ->
         event.preventDefault()
 
+        portfolio = $('.stock-list.active').attr('id')
         symbol = $(this).find('input')[0].value
 
         unless _.include(window.stocks, symbol)
@@ -108,11 +112,14 @@
           localStorage.setItem('stocks', window.stocks)
 
           stock = {symbol: symbol, last_price: ''}
-          $('#portfolio-one').append('<li name="' + stock.symbol + '">' + template(stock) + '</li>')
+
+          $('#'+portfolio).append('<li name="' + stock.symbol + '">' + template(stock) + '</li>')
 
           callback = (data) ->
+            portfolio = $('.stock-list.active').attr('id')
+
             $($('li[name=' + symbol + ']')[0]).html(template(data))
-            $('#portfolio-one').append()
+            $('#'+portfolio).append()
             $('#add-symbol-form input').val('')
 
           $.ajax({
