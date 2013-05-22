@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rack-coffee'
-gem 'data_mapper'
-gem 'dm-sqlite-adapter'
 gem 'haml'
 gem 'market_beat'
 gem 'puma'
