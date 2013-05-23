@@ -28,7 +28,9 @@ body {
 }
 
 .container {
+  margin-bottom: 40px;
   overflow: hidden;
+  overflow-y: scroll;
   position: relative;
   left: 0;
 
@@ -85,6 +87,7 @@ body {
   background: #ecf0f1;
   box-sizing: border-box;
   height: 0;
+  overflow-y: scroll;
   width: 100%;
 
   -webkit-transition: height 0.2s ease-in-out;
@@ -101,9 +104,16 @@ body {
     padding: 0;
 
     li {
+      background-color: #bdc3c7;
+      color: #7f8c8d;
+      font-size: 24px;
       list-style-type: none;
       margin: 0;
-      padding: 10px;
+      padding: 20px;
+
+      &:nth-child(odd) {
+        background-color: darken(#bdc3c7, 5%);
+      }
     }
   }
 }
@@ -121,28 +131,45 @@ body {
           transition: height 0.2s ease-in-out;
 
   &.visible { height: 100px; }
+}
 
-  .add-symbol-form {
-    input[type=text] {
-      background-color: darken(#2c3e50, 10%);
-      border: none;
-      box-sizing: border-box;
-      color: lighten(#2C3E50, 25%);
-      font-family: 'Helvetica Neue', Helvetica, sans-serif;
-      font-size: 36px;
-      font-weight: lighter;
-      height: 100px;
-      max-height: 100px;
-      outline: none;
-      padding: 20px;
-      text-transform: uppercase;
-      width: 100%;
+.add-symbol-form, .add-portfolio-form {
+  input[type=text] {
+    border: none;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 36px;
+    font-weight: lighter;
+    height: 100px;
+    max-height: 100px;
+    outline: none;
+    padding: 20px;
+    width: 100%;
+  }
+}
 
-      &::-webkit-input-placeholder { color: #2C3E50; text-transform: none; }
-      &::-moz-placeholder          { color: #2C3E50; text-transform: none; }
-      &:-moz-placeholder           { color: #2C3E50; text-transform: none; }
-      &:-ms-input-placeholder      { color: #2C3E50; text-transform: none; }
-    }
+.add-symbol-form {
+  input[type=text] {
+    background-color: darken(#2c3e50, 10%);
+    color: lighten(#2C3E50, 25%);
+    text-transform: uppercase;
+
+    &::-webkit-input-placeholder { color: #2C3E50; text-transform: none; }
+    &::-moz-placeholder          { color: #2C3E50; text-transform: none; }
+    &:-moz-placeholder           { color: #2C3E50; text-transform: none; }
+    &:-ms-input-placeholder      { color: #2C3E50; text-transform: none; }
+  }
+}
+
+.add-portfolio-form {
+  input[type=text] {
+    background-color: #bdc3c7;
+    color: darken(#bdc3c7, 25%);
+
+    &::-webkit-input-placeholder { color: darken(#ECF0F1, 5%); }
+    &::-moz-placeholder          { color: darken(#ECF0F1, 5%); }
+    &:-moz-placeholder           { color: darken(#ECF0F1, 5%); }
+    &:-ms-input-placeholder      { color: darken(#ECF0F1, 5%); }
   }
 }
 
@@ -331,10 +358,13 @@ p {
 .page-nav {
   background: darken($color_midnight, 20%);
   bottom: 0;
+  height: 20px;
   padding: 10px;
   position: fixed;
   text-align: center;
   width: 100%;
+
+  z-index: 10000;
 
   .nav-item {
     background-color: $color_wet_asphalt;
