@@ -1,9 +1,15 @@
 // Colors
+$color_text_inverted: #fff;
+
 $color_alizarin:      #e74c3c;
+$color_silver:        #bdc3c7;
 $color_clouds:        #ecf0f1;
+$color_emerald:       #2ecc71;
 $color_nephritis:     #27ae60;
 $color_wet_asphalt:   #34495e;
 $color_midnight_blue: #2c3e50;
+$color_asbestos:      #7f8c8d;
+
 
 // Fonts
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
@@ -84,7 +90,7 @@ body {
     }
 
     &:hover {
-      &:after { color: #ecf0f1; }
+      &:after { color: $color_clouds; }
     }
   }
 
@@ -127,23 +133,23 @@ body {
     padding: 0;
 
     li {
-      background-color: #bdc3c7;
-      color: #7f8c8d;
+      background-color: $color_silver;
+      color: $color_asbestos;
       font-size: 24px;
       list-style-type: none;
       margin: 0;
       padding: 20px;
 
       &:nth-child(odd) {
-        background-color: darken(#bdc3c7, 5%);
+        background-color: darken($color_silver, 5%);
       }
     }
   }
 }
 
 .add-symbol-wrapper {
-  background-color: darken(#2c3e50, 10%);
-  border-bottom: 1px solid darken(#2c3e50, 20%);
+  background-color: darken($color_midnight_blue, 10%);
+  border-bottom: 1px solid darken($color_midnight_blue, 20%);
   box-sizing: border-box;
   height: 0;
   max-height: 100px;
@@ -158,20 +164,20 @@ body {
 
 .add-symbol-form, .add-portfolio-form {
   input[type=text] {
-    background-color: darken(#2c3e50, 10%);
-    color: lighten(#2C3E50, 50%);
+    background-color: darken($color_midnight_blue, 10%);
+    color: lighten($color_midnight_blue, 50%);
     border: none;
     box-sizing: border-box;
-    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    font-family: $sans_serif;
     font-weight: lighter;
     outline: none;
     padding: 20px;
     width: 100%;
 
-    &::-webkit-input-placeholder { color: #2C3E50; text-transform: none; }
-    &::-moz-placeholder          { color: #2C3E50; text-transform: none; }
-    &:-moz-placeholder           { color: #2C3E50; text-transform: none; }
-    &:-ms-input-placeholder      { color: #2C3E50; text-transform: none; }
+    &::-webkit-input-placeholder { color: $color_midnight_blue; text-transform: none; }
+    &::-moz-placeholder          { color: $color_midnight_blue; text-transform: none; }
+    &:-moz-placeholder           { color: $color_midnight_blue; text-transform: none; }
+    &:-ms-input-placeholder      { color: $color_midnight_blue; text-transform: none; }
   }
 }
 
@@ -228,15 +234,15 @@ body {
 
       &.gain {
         background-image: none;
-        background-color: #27AE60;
-        border-bottom: 1px solid darken(#27AE60, 10%);
+        background-color: $color_nephritis;
+        border-bottom: 1px solid darken($color_nephritis, 10%);
 
         &:hover {
-          background-color: darken(#27AE60, 10%);
+          background-color: darken($color_nephritis, 10%);
         }
 
         &:after {
-          color: lighten(#2ECC71, 25%);
+          color: lighten($color_emerald, 25%);
           content: "\25B4";
         }
       }
@@ -306,7 +312,7 @@ body {
   width: 36px;
 
   &:after {
-    color: #fff;
+    color: $color_text_inverted;
     content: "\2421";
     font-family: "SSStandard";
   }
@@ -343,7 +349,7 @@ body {
             transition: background-color 0.2s;
 
     &.active, &:hover {
-      background-color: #fff;
+      background-color: $color_text_inverted;
     }
   }
 }
