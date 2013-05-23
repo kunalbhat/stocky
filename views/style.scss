@@ -1,7 +1,14 @@
 // Colors
-$color_alizarin: #e74c3c;
-$color_wet_asphalt: #34495e;
-$color_midnight: #2c3e50;
+$color_alizarin:      #e74c3c;
+$color_clouds:        #ecf0f1;
+$color_nephritis:     #27ae60;
+$color_wet_asphalt:   #34495e;
+$color_midnight_blue: #2c3e50;
+
+// Fonts
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+$sans_serif: 'Open Sans', Arial, sans-serif;
 
 @font-face {
   font-family: "SSStandard";
@@ -14,19 +21,35 @@ $color_midnight: #2c3e50;
   font-style: normal;
 }
 
+// Typography
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+p {
+  font-size: 32px;
+  font-weight: 300;
+  margin: 0;
+
+  span { font-size: 18px; }
+}
+
+// Global
 body {
-  background-color: darken(#2C3E50, 10%);
-  color: #111;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: darken($color_midnight_blue, 10%);
+  color: $color_midnight_blue;
+  font-family: $sans_serif;
   font-size: 16px;
   margin: 0;
   padding: 0;
 }
 
+// Structure
 .container {
   margin-bottom: 40px;
   overflow: hidden;
@@ -40,9 +63,9 @@ body {
 }
 
 .title-bar {
-  background-color: darken(#2C3E50, 10%);
+  background-color: darken($color_midnight_blue, 10%);
   box-sizing: border-box;
-  color: #ecf0f1;
+  color: $color_clouds;
   overflow: hidden;
   padding: 20px;
   position: relative;
@@ -54,7 +77,7 @@ body {
     width: 50%;
 
     &:after {
-      color: lighten(#2C3E50, 25%);
+      color: lighten($color_midnight_blue, 25%);
       content: "\E9A1";
       cursor: pointer;
       font-family: "SSStandard";
@@ -71,20 +94,20 @@ body {
     width: 50%;
 
     &:after {
-      color: lighten(#2C3E50, 25%);
+      color: lighten($color_midnight_blue, 25%);
       content: "\002B";
       cursor: pointer;
       font-family: "SSStandard";
     }
 
     &:hover {
-      &:after { color: #ecf0f1; }
+      &:after { color: $color_clouds; }
     }
   }
 }
 
 .menu-pane {
-  background: #ecf0f1;
+  background: $color_clouds;
   box-sizing: border-box;
   height: 0;
   overflow-y: scroll;
@@ -190,15 +213,15 @@ body {
     .stock-info-wrapper {
       &.loss {
         background-image: none;
-        background-color: #2C3E50;
-        border-bottom: 1px solid darken(#2C3e50, 10%);
+        background-color: $color_midnight_blue;
+        border-bottom: 1px solid darken($color_midnight_blue, 10%);
 
         &:hover {
-          background-color: darken(#2C3E50, 5%);
+          background-color: darken($color_midnight_blue, 5%);
         }
 
         &:after {
-          color: #E74C3C;
+          color: $color_alizarin;
           content: "\25BE";
         }
       }
@@ -211,21 +234,24 @@ body {
         &:hover {
           background-color: darken(#27AE60, 10%);
         }
+
+        &:after {
+          color: lighten(#2ECC71, 25%);
+          content: "\25B4";
+        }
       }
     }
 
     .stock-detail-content {
-      background-color: darken(#2C3E50, 10%);
+      background-color: darken($color_midnight_blue, 10%);
       box-sizing: border-box;
-      color: #efefef;
+      color: $color_clouds;
       height: 300px;
       padding: 20px;
       width: 100%;
     }
 
-    &.expand {
-      height: 400px;
-    }
+    &.expand { height: 400px; }
   }
 
   .stock-tools {
@@ -234,10 +260,10 @@ body {
   }
 
   .stock-info-wrapper {
-    background: darken(#2c3e50, 15%) url('images/loading.gif') no-repeat 20px 55px;
-    border-bottom: 1px solid #34495e;
+    background: darken($color_midnight_blue, 15%) url('images/loading.gif') no-repeat 20px 55px;
+    border-bottom: 1px solid $color_wet_asphalt;
     box-sizing: border-box;
-    color: #fff;
+    color: $color_clouds;
     cursor: pointer;
     display: inline-block;
     height: 100px;
@@ -253,80 +279,21 @@ body {
             transition: width 0.2s ease-in-out;
 
     &:hover, &:active {
-      background-color: darken(#27AE60, 10%);
+      background-color: darken($color_nephritis, 10%);
 
-      &:after {
-        display: none;
-      }
+      &:after { display: none; }
 
       .settings, .stock-tools {
         display: block;
       }
     }
 
-    &.show-settings {
-      margin-right: 0;
-      width: 90%;
-    }
-
-    .stock-info {
-      float: left;
-    }
-
     &:after {
-      color: #2ECC71;
-      content: "\25B4";
       font-family: "SSStandard";
       position: absolute;
       right: 20px;
       top: 40px;
     }
-  }
-}
-
-.settings-drawer {
-  background-color: #ecf0f1;
-  display: block;
-  height: 100px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 10%;
-  z-index: -1;
-
-  &:hover {
-    background-color: red;
-    z-index: 100;
-  }
-}
-
-.settings {
-  cursor: pointer;
-  display: none;
-  height: 36px;
-  position: absolute;
-  right: 0;
-  top: 40px;
-  width: 36px;
-
-  &:after {
-    color: #efefef;
-    content: "\2699";
-    font-family: "SSStandard";
-  }
-}
-
-strong {
-  font-size: 14px;
-}
-
-p {
-  font-size: 36px;
-  font-weight: lighter;
-  margin: 0;
-
-  span {
-    font-size: 18px;
   }
 }
 
@@ -345,14 +312,12 @@ p {
   }
 
   &:hover {
-    &:after {
-      color: $color_alizarin;
-    }
+    &:after { color: $color_alizarin; }
   }
 }
 
 .page-nav {
-  background: darken($color_midnight, 20%);
+  background: darken($color_midnight_blue, 20%);
   bottom: 0;
   height: 20px;
   padding: 10px;
