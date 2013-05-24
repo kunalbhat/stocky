@@ -37,7 +37,9 @@
   :coffee
     for x in [0..localStorage.length - 1]
       key = localStorage.key(x)
-      $('#portfolio-list').append('<li>' + key + '</li>')
+      prettyKey = key.replace('_', ' ')
+
+      $('#portfolio-list').append('<li>' + prettyKey + '</li>')
       $('.page-nav').append('<a class="nav-item" href="#"></a>')
       $('#portfolios').append('<ul class="stock-list" id="' + key + '"></ul>')
 
@@ -98,6 +100,7 @@
     $('#add-portfolio-form').submit (e) ->
       e.preventDefault()
       portfolio = $(@).children('input').val()
+      portfolio = (portfolio.toLowerCase()).replace(' ', '_')
 
       localStorage.setItem(portfolio, window.portfolio)
 

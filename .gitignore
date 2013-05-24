@@ -40,7 +40,6 @@ Thumbs.db
 
 # Extras #
 ##########
-Gemfile.lock
 .sass-cache/*
 
 # Bundler
