@@ -35,40 +35,31 @@
       {{ticker_trend}}
 
   :coffee
-    for x in [0..localStorage.length - 1]
-      key = localStorage.key(x)
-      prettyKey = key.replace('_', ' ')
-      portfolio = $('.stock-list.active').attr('id')
+    if savedData = localStorage.getItem('stocks')
+      window.stocks = savedData.split(',')
+    else
+      window.stocks = ['GOOG', 'AAPL', 'YHOO']
 
-      $('#portfolio-list').append('<li>' + prettyKey + '</li>')
-      $('.page-nav').append('<a class="nav-item" href="#"></a>')
-      $('#portfolios').append('<ul class="stock-list" id="' + key + '"></ul>')
+    source   = $("#stock-template").html()
+    template = Handlebars.compile(source)
 
-      if savedData = localStorage.getItem(String(key))
-        window.portfolio = savedData.split(',')
-      else
-        window.portfolio = []
+    _.each window.stocks, (symbol) ->
+      stock = {symbol: symbol, last_price: ''}
 
-      source   = $("#stock-template").html()
-      template = Handlebars.compile(source)
+      $('.stock-list').append('<li name="' + stock.symbol + '">' + template(stock) + '</li>')
 
-      _.each window.portfolio, (symbol) ->
-        stock = {symbol: symbol, last_price: ''}
+      callback = (data) ->
+        $($('li[name=' + symbol + ']')[0]).html(template(data))
+        window.bindEvents()
 
-        $('.stock-list#'+portfolio).append('<li name="' + stock.symbol + '">' + template(stock) + '</li>')
-
-        callback = (data) ->
-          $($('li[name=' + symbol + ']')[0]).html(template(data))
-          window.bindEvents()
-
-        $.ajax({
-          contentType: 'application/json',
-          tyoe: 'POST',
-          url: '/stocks',
-          data: { symbol: symbol },
-          dataType: 'json',
-          success: callback
-        })
+      $.ajax({
+        contentType: 'application/json',
+        tyoe: 'POST',
+        url: '/stocks',
+        data: { symbol: symbol },
+        dataType: 'json',
+        success: callback
+      })
 
     $stockList = $('.stock-list')
     $($stockList[0]).addClass('active')
@@ -85,25 +76,11 @@
       $('.stock-list').removeClass('active')
       $($('.stock-list')[index]).addClass('active')
 
-
-    $('#menu').click (e) ->
-      $('.menu-pane').toggleClass('visible')
-
-    $('.settings').click ->
-      $(@).parent('.stock-info-wrapper').toggleClass('show-settings')
-
     $('#add-symbol').click ->
       $('.add-symbol-wrapper').toggleClass('visible')
 
     $('.stock-list li').click (e) ->
       $(@).toggleClass('expand')
-
-    $('#add-portfolio-form').submit (e) ->
-      e.preventDefault()
-      portfolio = $(@).children('input').val()
-      portfolio = (portfolio.toLowerCase()).replace(' ', '_')
-
-      localStorage.setItem(portfolio, window.portfolio)
 
     window.bindEvents =  ->
 
@@ -114,10 +91,8 @@
         localStorage.setItem('stocks', window.stocks)
         $('li[name=' + stock + ']').remove()
 
-      $('#add-symbol-form').submit (event) ->
-        event.preventDefault()
-
-        portfolio = $('.stock-list.active').attr('id')
+      $('#add-symbol-form').submit (e) ->
+        e.preventDefault()
         symbol = $(this).find('input')[0].value
 
         unless _.include(window.stocks, symbol)
@@ -126,13 +101,11 @@
 
           stock = {symbol: symbol, last_price: ''}
 
-          $('#'+portfolio).append('<li name="' + stock.symbol + '">' + template(stock) + '</li>')
+          $('.stock-list').append('<li name="' + stock.symbol + '">' + template(stock) + '</li>')
 
           callback = (data) ->
-            portfolio = $('.stock-list.active').attr('id')
-
             $($('li[name=' + symbol + ']')[0]).html(template(data))
-            $('#'+portfolio).append()
+            $('.stock-list').append()
             $('#add-symbol-form input').val('')
 
           $.ajax({
