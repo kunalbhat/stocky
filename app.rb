@@ -5,6 +5,8 @@ Bundler.require
 
 require_relative 'services/stock_info'
 
+use Rack::Coffee, root: 'assets', urls: '/javascripts'
+
 get '/style.css' do
   scss :style
 end
