@@ -38,10 +38,37 @@
     for x in [0..localStorage.length - 1]
       key = localStorage.key(x)
       prettyKey = key.replace('_', ' ')
+      portfolio = $('.stock-list.active').attr('id')
 
       $('#portfolio-list').append('<li>' + prettyKey + '</li>')
       $('.page-nav').append('<a class="nav-item" href="#"></a>')
       $('#portfolios').append('<ul class="stock-list" id="' + key + '"></ul>')
+
+      if savedData = localStorage.getItem(String(key))
+        window.portfolio = savedData.split(',')
+      else
+        window.portfolio = []
+
+      source   = $("#stock-template").html()
+      template = Handlebars.compile(source)
+
+      _.each window.portfolio, (symbol) ->
+        stock = {symbol: symbol, last_price: ''}
+
+        $('.stock-list#'+portfolio).append('<li name="' + stock.symbol + '">' + template(stock) + '</li>')
+
+        callback = (data) ->
+          $($('li[name=' + symbol + ']')[0]).html(template(data))
+          window.bindEvents()
+
+        $.ajax({
+          contentType: 'application/json',
+          tyoe: 'POST',
+          url: '/stocks',
+          data: { symbol: symbol },
+          dataType: 'json',
+          success: callback
+        })
 
     $stockList = $('.stock-list')
     $($stockList[0]).addClass('active')
@@ -58,32 +85,6 @@
       $('.stock-list').removeClass('active')
       $($('.stock-list')[index]).addClass('active')
 
-    if savedData = localStorage.getItem('stocks')
-      window.stocks = savedData.split(',')
-    else
-      window.stocks = []
-
-    source   = $("#stock-template").html()
-    template = Handlebars.compile(source)
-
-    _.each window.stocks, (symbol) ->
-      stock = {symbol: symbol, last_price: ''}
-      portfolio = $('.stock-list.active').attr('id')
-
-      $('#'+portfolio).append('<li name="' + stock.symbol + '">' + template(stock) + '</li>')
-
-      callback = (data) ->
-        $($('li[name=' + symbol + ']')[0]).html(template(data))
-        window.bindEvents()
-
-      $.ajax({
-        contentType: 'application/json',
-        tyoe: 'POST',
-        url: '/stocks',
-        data: { symbol: symbol },
-        dataType: 'json',
-        success: callback
-      })
 
     $('#menu').click (e) ->
       $('.menu-pane').toggleClass('visible')
