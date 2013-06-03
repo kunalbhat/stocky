@@ -175,11 +175,7 @@ body {
 
     &.show-drawer {
       .stock-info-wrapper {
-        width: 91%;
-
-        &:after {
-          right: 170px;
-        }
+        left: -10%;
       }
 
       .drawer {
@@ -228,27 +224,25 @@ body {
     cursor: pointer;
     display: inline-block;
     height: 100px;
+    left: 0;
     max-height: 100px;
     overflow: hidden;
     padding: 20px;
+    position: relative;
     width: 100%;
     z-index: 99;
 
     -moz-box-sizing: border-box;
 
-    -webkit-transition: width 0.2s ease-in-out;
-       -moz-transition: width 0.2s ease-in-out;
-            transition: width 0.2s ease-in-out;
+    -webkit-transition: left 0.2s ease-in-out;
+       -moz-transition: left 0.2s ease-in-out;
+            transition: left 0.2s ease-in-out;
 
     &:after {
       font-family: 'SSStandard';
       position: absolute;
       right: 20px;
       top: 40px;
-
-      -webkit-transition: right 0.2s ease-in-out;
-         -moz-transition: right 0.2s ease-in-out;
-              transition: right 0.2s ease-in-out;
     }
   }
 }
@@ -272,23 +266,23 @@ body {
   width: 36px;
 
   &:after {
-    color: $color_text_inverted;
+    color: $color_silver;
     font-family: 'SSStandard';
   }
 
   &:hover {
-    &:after { color: #3498db; }
+    &:after { color: $color_text_inverted; }
   }
 }
 
 .remove {
-  right: 0;
+  right: 10px;
 
   &:after { content: '\e0d0'; }
 }
 
 .chart {
-  right: 60px;
+  right: 70px;
 
   &:after { content: '\1F4CA'; }
 }
