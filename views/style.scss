@@ -10,14 +10,13 @@ $color_wet_asphalt:   #34495e;
 $color_midnight_blue: #2c3e50;
 $color_asbestos:      #7f8c8d;
 
-
 // Fonts
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
 $sans_serif: 'Open Sans', Arial, sans-serif;
 
 @font-face {
-  font-family: "SSStandard";
+  font-family: 'SSStandard';
   src: url('webfonts/ss-standard.eot');
   src: url('webfonts/ss-standard.eot?#iefix') format('embedded-opentype'),
        url('webfonts/ss-standard.woff') format('woff'),
@@ -84,9 +83,9 @@ body {
 
     &:after {
       color: lighten($color_midnight_blue, 25%);
-      content: "\E9A1";
+      content: '\e9a1';
       cursor: pointer;
-      font-family: "SSStandard";
+      font-family: 'SSStandard';
     }
 
     &:hover {
@@ -101,9 +100,9 @@ body {
 
     &:after {
       color: lighten($color_midnight_blue, 25%);
-      content: "\002B";
+      content: '\002b';
       cursor: pointer;
-      font-family: "SSStandard";
+      font-family: 'SSStandard';
     }
 
     &:hover {
@@ -228,7 +227,7 @@ body {
 
         &:after {
           color: $color_alizarin;
-          content: "\25BE";
+          content: '\25be';
         }
       }
 
@@ -243,24 +242,10 @@ body {
 
         &:after {
           color: lighten($color_emerald, 25%);
-          content: "\25B4";
+          content: '\25b4';
         }
       }
     }
-
-    .stock-detail-content {
-      background-color: darken($color_midnight_blue, 10%);
-      box-sizing: border-box;
-      color: $color_clouds;
-      height: 300px;
-      padding: 20px;
-      width: 100%;
-    }
-  }
-
-  .stock-tools {
-    float: left;
-    display: none;
   }
 
   .stock-info-wrapper {
@@ -287,13 +272,11 @@ body {
 
       &:after { display: none; }
 
-      .settings, .stock-tools {
-        display: block;
-      }
+      .settings, .stock-tools { display: block; }
     }
 
     &:after {
-      font-family: "SSStandard";
+      font-family: 'SSStandard';
       position: absolute;
       right: 20px;
       top: 40px;
@@ -311,8 +294,8 @@ body {
 
   &:after {
     color: $color_text_inverted;
-    content: "\2421";
-    font-family: "SSStandard";
+    content: '\2421';
+    font-family: 'SSStandard';
   }
 
   &:hover {
