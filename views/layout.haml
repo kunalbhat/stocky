@@ -21,12 +21,14 @@
   %script{ src: '/javascripts/chart.min.js' }
 
   %script{type: 'text/x-handlebars-template', id: 'stock-template'}
-    %a{ href: '/{{symbol}}' }
-      .stock-info-wrapper{ class: '{{status}}' }
-        .stock-info
-          %strong {{symbol}}
-          %p.stock-price
-            {{last_price}}
-            %span.change {{percent_change}}
+    .stock-info-wrapper{ class: '{{status}}' }
+      .stock-info
+        %strong {{symbol}}
+        %p.stock-price
+          {{last_price}}
+          %span.change {{percent_change}}
+    .drawer
+      .chart
+      .remove
 
   %script{src: '/javascripts/application.js'}

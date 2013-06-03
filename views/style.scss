@@ -270,3 +270,43 @@ body {
   font-size: 64px;
   font-weight: 300;
 }
+
+.drawer {
+  height: 100px;
+  position: absolute;
+  right: -200px;
+  top: 0;
+
+  -webkit-transition: right 0.2s ease-in-out;
+     -moz-transition: right 0.2s ease-in-out;
+          transition: right 0.2s ease-in-out;
+}
+
+.chart, .remove {
+  cursor: pointer;
+  height: 36px;
+  position: absolute;
+  top: 40px;
+  width: 36px;
+
+  &:after {
+    color: $color_silver;
+    font-family: 'SSStandard';
+  }
+
+  &:hover {
+    &:after { color: $color_text_inverted; }
+  }
+}
+
+.remove {
+  right: 10px;
+
+  &:after { content: '\e0d0'; }
+}
+
+.chart {
+  right: 70px;
+
+  &:after { content: '\1F4CA'; }
+}
