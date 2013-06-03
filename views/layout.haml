@@ -29,9 +29,5 @@
         %p.stock-price
           {{last_price}}
           %span.change {{percent_change}}
-      .stock-tools
-        .remove{name: '{{symbol}}'}
-    .stock-detail-content
-      %canvas{ class: 'chart-js', height: '300', width: '600' }
 
   %script{src: '/javascripts/application.js'}
