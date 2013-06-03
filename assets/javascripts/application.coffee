@@ -42,9 +42,6 @@ $('.nav-item').click (e) ->
 $('#add-symbol').click ->
   $('.add-symbol-wrapper').toggleClass('visible')
 
-$('.stock-list li').click (e) ->
-  $(@).toggleClass('expand')
-
 window.bindEvents =  ->
 
   $('.remove').click (e) ->
@@ -82,4 +79,3 @@ window.bindEvents =  ->
       window.bindEvents()
 
 $(-> window.bindEvents())
-

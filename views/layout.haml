@@ -5,10 +5,10 @@
     %meta{ name: 'viewport', content: 'initial-scale=1.0, maximum-scale=1.0' }
     %meta{ name: 'apple-mobile-web-app-capable', content: 'yes' }
     %link{ href: '/favicon.ico', rel: 'shortcut icon' }
-    %link{ href: '/touch-icon-iphone.png', rel: 'apple-touch-icon' }
-    %link{ href: '/touch-icon-ipad.png', rel: 'apple-touch-icon', sizes: '72x72' }
-    %link{ href: '/touch-icon-iphone-retina.png', rel: 'apple-touch-icon', sizes: '114x114' }
-    %link{ href: '/touch-icon-ipad-retina.png', rel: 'apple-touch-icon', sizes: '144x144' }
+    %link{ href: '/touch-icon-iphone.png', rel: 'apple-touch-icon-precomposed' }
+    %link{ href: '/touch-icon-ipad.png', rel: 'apple-touch-icon-precomposed', sizes: '72x72' }
+    %link{ href: '/touch-icon-iphone-retina.png', rel: 'apple-touch-icon-precomposed', sizes: '114x114' }
+    %link{ href: '/touch-icon-ipad-retina.png', rel: 'apple-touch-icon-precomposed', sizes: '144x144' }
     %link{ href: '/style.css', rel: 'stylesheet' }
   %body
     .container
@@ -16,7 +16,6 @@
         %nav#menu.menu
         #add-symbol.add-symbol
       = yield
-    .page-nav
 
   %script{ src: '//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js' }
   %script{ src: 'http://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.js' }
@@ -33,5 +32,6 @@
       .stock-tools
         .remove{name: '{{symbol}}'}
     .stock-detail-content
+      %canvas{ class: 'chart-js', height: '300', width: '600' }
 
   %script{src: '/javascripts/application.js'}
