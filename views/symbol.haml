@@ -1,0 +1,10 @@
+%header.title-bar
+  %nav#menu.menu
+  #add-symbol.add-symbol
+
+%article.stock-detail
+  %header{ class: "#{@symbol.status}" }
+    %h3= @symbol.symbol
+    %p.last-price
+      = @symbol.last_price
+      %span.percent-change= @symbol.percent_change

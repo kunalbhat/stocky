@@ -52,15 +52,16 @@ body {
   font-size: 16px;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 // Structure
 .container {
   margin-bottom: 40px;
   overflow: hidden;
-  overflow-y: scroll;
   position: relative;
   left: 0;
+  width: 100%;
 
   -webkit-transition: left 0.2s ease-in-out;
      -moz-transition: left 0.2s ease-in-out;
@@ -111,41 +112,6 @@ body {
   }
 }
 
-.menu-pane {
-  background: $color_clouds;
-  box-sizing: border-box;
-  height: 0;
-  overflow-y: scroll;
-  width: 100%;
-
-  -webkit-transition: height 0.2s ease-in-out;
-     -moz-transition: height 0.2s ease-in-out;
-          transition: height 0.2s ease-in-out;
-
-
-  &.visible {
-    height: 300px;
-  }
-
-  ul {
-    margin: 0;
-    padding: 0;
-
-    li {
-      background-color: $color_silver;
-      color: $color_asbestos;
-      font-size: 24px;
-      list-style-type: none;
-      margin: 0;
-      padding: 20px;
-
-      &:nth-child(odd) {
-        background-color: darken($color_silver, 5%);
-      }
-    }
-  }
-}
-
 .add-symbol-wrapper {
   background-color: darken($color_midnight_blue, 10%);
   border-bottom: 1px solid darken($color_midnight_blue, 20%);
@@ -189,14 +155,6 @@ body {
   }
 }
 
-.add-portfolio-form {
-  input[type=text] {
-    font-size: 24px;
-    height: 60px;
-    max-height: 60px;
-  }
-}
-
 .stock-list {
   margin: 0;
   padding: 0;
@@ -214,6 +172,20 @@ body {
     -webkit-transition: height 0.2s ease-in-out;
        -moz-transition: height 0.2s ease-in-out;
             transition: height 0.2s ease-in-out;
+
+    &.show-drawer {
+      .stock-info-wrapper {
+        width: 91%;
+
+        &:after {
+          right: 170px;
+        }
+      }
+
+      .drawer {
+        right: 0;
+      }
+    }
 
     .stock-info-wrapper {
       &.loss {
@@ -258,49 +230,67 @@ body {
     height: 100px;
     max-height: 100px;
     overflow: hidden;
-    position: relative;
     padding: 20px;
     width: 100%;
     z-index: 99;
 
-    -webkit-transition: width 0.2s ease-in-out, background-color 0.2s ease-in-out;
-       -moz-transition: width 0.2s ease-in-out, background-color 0.2s ease-in-out;
-            transition: width 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    -moz-box-sizing: border-box;
 
-    &:hover, &:active {
-      background-color: darken($color_nephritis, 10%);
-
-      &:after { display: none; }
-
-      .settings, .stock-tools { display: block; }
-    }
+    -webkit-transition: width 0.2s ease-in-out;
+       -moz-transition: width 0.2s ease-in-out;
+            transition: width 0.2s ease-in-out;
 
     &:after {
       font-family: 'SSStandard';
       position: absolute;
       right: 20px;
       top: 40px;
+
+      -webkit-transition: right 0.2s ease-in-out;
+         -moz-transition: right 0.2s ease-in-out;
+              transition: right 0.2s ease-in-out;
     }
   }
 }
 
-.remove {
+.drawer {
+  height: 100px;
+  position: absolute;
+  right: -200px;
+  top: 0;
+
+  -webkit-transition: right 0.2s ease-in-out;
+     -moz-transition: right 0.2s ease-in-out;
+          transition: right 0.2s ease-in-out;
+}
+
+.chart, .remove {
   cursor: pointer;
   height: 36px;
   position: absolute;
-  right: 0;
   top: 40px;
   width: 36px;
 
   &:after {
     color: $color_text_inverted;
-    content: '\2421';
     font-family: 'SSStandard';
   }
 
   &:hover {
-    &:after { color: $color_alizarin; }
+    &:after { color: #3498db; }
   }
+}
+
+.remove {
+  right: 0;
+
+  &:after { content: '\e0d0'; }
+}
+
+.chart {
+  right: 60px;
+
+  &:after { content: '\1F4CA'; }
 }
 
 .page-nav {
@@ -335,4 +325,26 @@ body {
       background-color: $color_text_inverted;
     }
   }
+}
+
+.stock-detail {
+  header {
+    box-sizing: border-box;
+    color: $color_text_inverted;
+    height: 200px;
+    padding: 30px;
+
+    &.gain {
+      background-color: $color_nephritis;
+    }
+
+    &.loss {
+      background-color: $color_midnight_blue;
+    }
+  }
+}
+
+.last-price {
+  font-size: 64px;
+  font-weight: 300;
 }

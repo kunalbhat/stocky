@@ -20,6 +20,12 @@ get '/stocks' do
   StockInfo.new(params[:symbol]).to_hash.to_json
 end
 
+get '/:symbol' do
+  @symbol = StockInfo.new(params[:symbol])
+
+  haml :symbol
+end
+
 post '/stocks/new' do
   Stock.new(symbol: params[:stock_symbol]).save
 

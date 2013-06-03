@@ -42,6 +42,9 @@ $('.nav-item').click (e) ->
 $('#add-symbol').click ->
   $('.add-symbol-wrapper').toggleClass('visible')
 
+$('.stock-list li').click ->
+  $(this).toggleClass('show-drawer')
+
 window.bindEvents =  ->
 
   $('.remove').click (e) ->
