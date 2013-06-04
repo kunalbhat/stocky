@@ -42,17 +42,7 @@ $('.nav-item').click (e) ->
 $('#add-symbol').click ->
   $('.add-symbol-wrapper').toggleClass('visible')
 
-$('.stock-list li').click ->
-  $(this).toggleClass('show-drawer')
-
 window.bindEvents =  ->
-
-  $('.remove').click (e) ->
-    e.stopPropagation()
-    stock = $(e.currentTarget).attr('name')
-    window.stocks = _.reject(window.stocks, (symbol) -> symbol is stock)
-    localStorage.setItem('stocks', window.stocks)
-    $('li[name=' + stock + ']').remove()
 
   $('#add-symbol-form').submit (e) ->
     e.preventDefault()

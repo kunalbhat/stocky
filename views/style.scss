@@ -77,6 +77,8 @@ body {
   position: relative;
   width: 100%;
 
+  -moz-box-sizing: border-box;
+
   .menu {
     float: left;
     text-align: left;
@@ -175,7 +177,7 @@ body {
 
     &.show-drawer {
       .stock-info-wrapper {
-        left: -10%;
+        left: -50%;
       }
 
       .drawer {
@@ -243,80 +245,6 @@ body {
       position: absolute;
       right: 20px;
       top: 40px;
-    }
-  }
-}
-
-.drawer {
-  height: 100px;
-  position: absolute;
-  right: -200px;
-  top: 0;
-
-  -webkit-transition: right 0.2s ease-in-out;
-     -moz-transition: right 0.2s ease-in-out;
-          transition: right 0.2s ease-in-out;
-}
-
-.chart, .remove {
-  cursor: pointer;
-  height: 36px;
-  position: absolute;
-  top: 40px;
-  width: 36px;
-
-  &:after {
-    color: $color_silver;
-    font-family: 'SSStandard';
-  }
-
-  &:hover {
-    &:after { color: $color_text_inverted; }
-  }
-}
-
-.remove {
-  right: 10px;
-
-  &:after { content: '\e0d0'; }
-}
-
-.chart {
-  right: 70px;
-
-  &:after { content: '\1F4CA'; }
-}
-
-.page-nav {
-  display: none;
-
-  background: darken($color_midnight_blue, 20%);
-  bottom: 0;
-  height: 20px;
-  padding: 10px;
-  position: fixed;
-  text-align: center;
-  width: 100%;
-
-  z-index: 10000;
-
-  .nav-item {
-    background-color: $color_wet_asphalt;
-    display: inline-block;
-    height: 12px;
-    margin: 4px;
-    width: 12px;
-
-    -webkit-border-radius: 6px;
-       -moz-border-radius: 6px;
-            border-radius: 6px;
-
-    -webkit-transition: background-color 0.2s;
-       -moz-transition: background-color 0.2s;
-            transition: background-color 0.2s;
-
-    &.active, &:hover {
-      background-color: $color_text_inverted;
     }
   }
 }
