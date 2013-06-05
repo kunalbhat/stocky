@@ -23,12 +23,14 @@
   %script{type: 'text/x-handlebars-template', id: 'stock-template'}
     .stock-info-wrapper{ class: '{{status}}' }
       .stock-info
-        %strong {{symbol}}
+        .symbol-company
+          %strong {{symbol}}
+          %span.subdued {{company}}
         %p.stock-price
           {{last_price}}
-          %span.change {{percent_change}}
+          %span.change {{point_change}} ({{percent_change}})
     .drawer
       .chart
-      .remove
+      .remove{ name: '{{symbol}}' }
 
   %script{src: '/javascripts/application.js'}

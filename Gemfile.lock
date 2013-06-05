@@ -10,10 +10,10 @@ GEM
     coffee-script-source (1.6.2)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    haml (4.0.2)
+    haml (4.0.3)
       tilt
     market_beat (0.2.0)
-    multi_json (1.7.3)
+    multi_json (1.7.6)
     puma (2.0.1)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)

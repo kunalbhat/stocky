@@ -9,10 +9,8 @@ class StockInfo
     { symbol:         symbol,
       last_price:     last_price,
       opening_price:  opening_price,
-      ticker_trend:   ticker_trend,
       point_change:   point_change,
       percent_change: percent_change,
-      chart_url:      chart_url,
       status:         status }
   end
 
@@ -34,14 +32,6 @@ class StockInfo
 
   def opening_price
     @_opening_price ||= MarketBeat.opening_price symbol
-  end
-
-  def chart_url
-    @_chart_url ||= MarketBeat.chart_url symbol
-  end
-
-  def ticker_trend
-    @_ticker_trend ||= MarketBeat.ticker_trend symbol
   end
 
   private

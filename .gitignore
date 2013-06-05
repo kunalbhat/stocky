@@ -39,8 +39,8 @@ ehthumbs.db
 Thumbs.db
 
 # Extras #
-##########
 .sass-cache/*
+design/
 
 # Bundler
 bin

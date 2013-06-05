@@ -47,8 +47,14 @@ $('.stock-list li').click ->
 
 window.bindEvents =  ->
 
-  $('#add-symbol-form').submit (e) ->
-    e.preventDefault()
+  $(document).on 'click', '.remove', (e) ->
+    stock = $(e.currentTarget).attr('name')
+    window.stocks = _.reject(window.stocks, (symbol) -> symbol is stock)
+    localStorage.setItem('stocks', window.stocks)
+    $('li[name=' + stock + ']').remove()
+
+  $('#add-symbol-form').submit (event) ->
+    event.preventDefault()
     symbol = $(this).find('input')[0].value
 
     unless _.include(window.stocks, symbol)
