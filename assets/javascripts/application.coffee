@@ -48,6 +48,7 @@ $('.stock-list li').click ->
 window.bindEvents =  ->
 
   $(document).on 'click', '.remove', (e) ->
+    e.preventDefault()
     stock = $(e.currentTarget).attr('name')
     window.stocks = _.reject(window.stocks, (symbol) -> symbol is stock)
     localStorage.setItem('stocks', window.stocks)

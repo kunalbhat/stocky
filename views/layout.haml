@@ -30,7 +30,7 @@
           {{last_price}}
           %span.change {{point_change}} ({{percent_change}})
     .drawer
-      .chart
-      .remove{ name: '{{symbol}}' }
+      %a.chart{ href: '/{{symbol}}' }
+      %a.remove{ href: '#', name: '{{symbol}}' }
 
   %script{src: '/javascripts/application.js'}
