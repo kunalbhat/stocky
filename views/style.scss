@@ -373,6 +373,10 @@ body {
   &:after { content: '\1F4CA'; }
 }
 
-.symbol-chart {
-  margin-top: 20px;
+.symbol-chart { margin-top: 20px; }
+
+@media only screen
+and (min-width : 320px)
+and (max-width : 480px) {
+  .subdued { display: none; }
 }
