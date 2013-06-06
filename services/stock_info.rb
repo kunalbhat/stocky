@@ -33,9 +33,8 @@ class StockInfo
   def quotes
     today          = Date.today
     start_of_week  = today - 5
-    end_of_week    = today - 1
 
-    @_quotes ||= MarketBeat.quotes(symbol, start_of_week, end_of_week)
+    @_quotes ||= MarketBeat.quotes(symbol, start_of_week, today)
   end
 
   def status
