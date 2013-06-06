@@ -34,3 +34,13 @@
         %a.chart{ href: '/{{symbol}}', target: '_self' }
 
   %script{src: '/javascripts/application.js'}
+
+  :javascript
+    var a = document.getElementsByTagName('a');
+
+    for(i=0; i<a.length; i++) {
+      a[i].onclick=function() {
+        window.location=this.getAttribute('href');
+        return false
+      }
+    }
