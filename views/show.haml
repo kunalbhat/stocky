@@ -1,10 +1,9 @@
 %header.title-bar
-  %nav#menu.menu
   #add-symbol.add-symbol
 
 .add-symbol-wrapper
   %form#add-symbol-form.add-symbol-form
-    %input{ name: 'stock_symbol', placeholder: 'e.g. GOOG', type: 'text' }
+    %input{ autocapitalize: 'off', autocorrect: 'off', name: 'stock_symbol', placeholder: 'e.g. GOOG', type: 'text' }
 
 #portfolios.portfolios
   %ul.stock-list#stocks
