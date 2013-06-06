@@ -203,13 +203,20 @@ body {
        -moz-transition: height 0.2s ease-in-out;
             transition: height 0.2s ease-in-out;
 
+    em { display: none; }
+
     &.show-drawer {
-      .stock-info-wrapper { left: -50%; }
+      .stock-info-wrapper { width: 91%; }
 
       .drawer { right: 0; }
     }
 
     .stock-info-wrapper {
+      &.loss em, &.gain em {
+        display: inline-block;
+        font-style: normal;
+      }
+
       &.loss {
         background-image: none;
         background-color: $color_midnight_blue;
@@ -261,9 +268,9 @@ body {
        -moz-box-sizing: border-box;
             box-sizing: border-box;
 
-    -webkit-transition: left 0.2s ease-in-out;
-       -moz-transition: left 0.2s ease-in-out;
-            transition: left 0.2s ease-in-out;
+    -webkit-transition: width 0.2s ease-in-out;
+       -moz-transition: width 0.2s ease-in-out;
+            transition: width 0.2s ease-in-out;
 
     &:after {
       font-family: 'SSStandard';
@@ -275,7 +282,7 @@ body {
 }
 
 .subdued {
-  color: $color_silver;
+  font-weight: 300;
 }
 
 .stock-detail {
@@ -357,13 +364,17 @@ body {
 }
 
 .remove {
-  right: 10px;
+  right: 0;
 
-  &:after { content: '\e0d0'; }
+  &:after { content: '\2421'; }
 }
 
 .chart {
   right: 70px;
 
   &:after { content: '\1F4CA'; }
+}
+
+.symbol-chart {
+  margin-top: 20px;
 }

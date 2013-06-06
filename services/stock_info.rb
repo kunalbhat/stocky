@@ -1,3 +1,5 @@
+require 'date'
+
 class StockInfo
   attr_accessor :symbol
 
@@ -5,18 +7,35 @@ class StockInfo
     self.symbol = symbol
   end
 
+  def last_prices
+    quotes.map { |quote| quote[:close].to_f }
+  end
+
+  def last_prices_days
+    quotes.map { |quote| quote[:date].strftime("%a") }
+  end
+
   def to_hash
     { company:        company,
-      symbol:         symbol,
       last_price:     last_price,
       opening_price:  opening_price,
       point_change:   point_change,
       percent_change: percent_change,
-      status:         status }
+      quotes:         quotes,
+      status:         status,
+      symbol:         symbol }
   end
 
   def company
     @_company ||= MarketBeat.company symbol
+  end
+
+  def quotes
+    today          = Date.today
+    start_of_week  = today - 5
+    end_of_week    = today - 1
+
+    @_quotes ||= MarketBeat.quotes(symbol, start_of_week, end_of_week)
   end
 
   def status

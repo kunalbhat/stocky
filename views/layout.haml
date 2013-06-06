@@ -18,7 +18,7 @@
   %script{ src: '//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js' }
   %script{ src: 'http://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.js' }
   %script{ src: '/javascripts/handlebar.js' }
-  %script{ src: '/javascripts/chart.min.js' }
+  %script{ src: '/javascripts/jquery.touchwipe.min.js' }
 
   %script{type: 'text/x-handlebars-template', id: 'stock-template'}
     .stock-info-wrapper{ class: '{{status}}' }
@@ -28,9 +28,9 @@
           %span.subdued {{company}}
         %p.stock-price
           {{last_price}}
-          %span.change {{point_change}} ({{percent_change}})
+          %span.change {{point_change}} <em>(</em>{{percent_change}}<em>)</em>
     .drawer
-      %a.chart{ href: '/{{symbol}}' }
       %a.remove{ href: '#', name: '{{symbol}}' }
+        %a.chart{ href: '/{{symbol}}', target: '_self' }
 
   %script{src: '/javascripts/application.js'}

@@ -1,6 +1,6 @@
 %header.title-bar
   %nav#menu
-    %a.return{ href: "#{request.referer}" }
+    %a.return{ href: '/', target: '_self' }
 
 %article.stock-detail
   %header{ class: "#{@symbol.status}" }
@@ -11,10 +11,25 @@
         = @symbol.point_change
         = (@symbol.percent_change)
 
-  %canvas{ id: 'chart', height: '200', width: '500' }
+  %canvas{ class: 'symbol-chart', id: 'symbol-chart', height: '200', width: '600' }
 
-  %table
-    %tr
-      %td Open
-      %td= @symbol.opening_price
+%script{ src: '/javascripts/chart.min.js' }
 
+:javascript
+
+  var ctx = document.getElementById('symbol-chart').getContext('2d');
+
+  var data = {
+    labels : #{@symbol.last_prices_days.reverse},
+    datasets : [
+      {
+        fillColor : "rgba(151,187,205,0.25)",
+        strokeColor : "rgba(151,187,205,1)",
+        pointColor : "rgba(151,187,205,1)",
+        pointStrokeColor : "#ecf0f1",
+        data : #{@symbol.last_prices.reverse}
+      }
+    ]
+  }
+
+  var myNewChart = new Chart(ctx).Line(data);
