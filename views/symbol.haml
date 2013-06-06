@@ -7,11 +7,11 @@
     %h3= @symbol.symbol
     %p.last-price
       = @symbol.last_price
-      %span.change
-        = @symbol.point_change
-        = (@symbol.percent_change)
+    %span.change
+      = @symbol.point_change
+      = (@symbol.percent_change)
 
-  %canvas{ class: 'symbol-chart', id: 'symbol-chart', height: '200', width: '600' }
+  %canvas{ class: 'symbol-chart', id: 'symbol-chart', height: '100', width: '300' }
 
 %script{ src: '/javascripts/chart.min.js' }
 
