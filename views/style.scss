@@ -179,8 +179,6 @@ body {
   }
 }
 
-.stock-info { width: 33%; }
-
 .stock-list {
   margin: 0;
   padding: 0;
@@ -206,7 +204,7 @@ body {
     em { display: none; }
 
     &.show-drawer {
-      .stock-info-wrapper { width: 91%; }
+      .stock-info-wrapper { width: 50%; }
 
       .drawer { right: 0; }
     }
