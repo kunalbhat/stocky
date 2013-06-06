@@ -1,6 +1,6 @@
 %header.title-bar
-  %nav#menu.menu
-  #add-symbol.add-symbol
+  %nav#menu
+    %a.return{ href: "#{request.referer}" }
 
 %article.stock-detail
   %header{ class: "#{@symbol.status}" }
@@ -11,7 +11,10 @@
         = @symbol.point_change
         = (@symbol.percent_change)
 
+  %canvas{ id: 'chart', height: '200', width: '500' }
+
   %table
     %tr
       %td Open
       %td= @symbol.opening_price
+

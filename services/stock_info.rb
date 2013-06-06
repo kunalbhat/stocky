@@ -6,12 +6,17 @@ class StockInfo
   end
 
   def to_hash
-    { symbol:         symbol,
+    { company:        company,
+      symbol:         symbol,
       last_price:     last_price,
       opening_price:  opening_price,
       point_change:   point_change,
       percent_change: percent_change,
       status:         status }
+  end
+
+  def company
+    @_company ||= MarketBeat.company symbol
   end
 
   def status

@@ -44,6 +44,8 @@ p {
   span { font-size: 18px; }
 }
 
+a { text-decoration: none; }
+
 // Global
 body {
   background-color: darken($color_midnight_blue, 10%);
@@ -94,6 +96,19 @@ body {
 
     &:hover {
       &:after { color: $color_clouds; }
+    }
+  }
+
+  .return {
+    float: left;
+    text-align: left;
+    width: 50%;
+
+    &:after {
+      color: lighten($color_midnight_blue, 25%);
+      content: '\25c5';
+      cursor: pointer;
+      font-family: 'SSStandard';
     }
   }
 
@@ -164,9 +179,7 @@ body {
   }
 }
 
-.stock-info {
-  width: 33%;
-}
+.stock-info { width: 33%; }
 
 .stock-list {
   margin: 0;
@@ -191,13 +204,9 @@ body {
             transition: height 0.2s ease-in-out;
 
     &.show-drawer {
-      .stock-info-wrapper {
-        left: -50%;
-      }
+      .stock-info-wrapper { left: -50%; }
 
-      .drawer {
-        right: 0;
-      }
+      .drawer { right: 0; }
     }
 
     .stock-info-wrapper {
