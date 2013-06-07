@@ -145,12 +145,16 @@ body {
 .add-symbol-form, .symbol-lookup-wrapper {
   input[type=text] {
     background-color: darken($color_midnight_blue, 10%);
-    color: lighten($color_midnight_blue, 50%);
     border: none;
+    color: lighten($color_midnight_blue, 50%);
     font-family: $sans_serif;
+    font-size: 36px;
     font-weight: lighter;
+    height: 100px;
+    max-height: 100px;
     outline: none;
     padding: 20px;
+    text-transform: uppercase;
     width: 100%;
 
     -webkit-box-sizing: border-box;
@@ -161,15 +165,6 @@ body {
     &::-moz-placeholder          { color: $color_midnight_blue; text-transform: none; }
     &:-moz-placeholder           { color: $color_midnight_blue; text-transform: none; }
     &:-ms-input-placeholder      { color: $color_midnight_blue; text-transform: none; }
-  }
-}
-
-.add-symbol-form, .symbol-lookup-form {
-  input[type=text] {
-    font-size: 36px;
-    height: 100px;
-    max-height: 100px;
-    text-transform: uppercase;
   }
 }
 
@@ -273,9 +268,7 @@ body {
   }
 }
 
-.subdued {
-  font-weight: 300;
-}
+.subdued { font-weight: 300; }
 
 .stock-detail {
   header {
