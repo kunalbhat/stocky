@@ -15,6 +15,12 @@ get '/' do
   haml :show
 end
 
+post '/search' do
+  @symbol = StockInfo.new(params[:stock_symbol])
+
+  haml :symbol
+end
+
 get '/stocks' do
   content_type :json
   StockInfo.new(params[:symbol]).to_hash.to_json
@@ -24,12 +30,6 @@ get '/:symbol' do
   @symbol = StockInfo.new(params[:symbol])
 
   haml :symbol
-end
-
-post '/stocks/new' do
-  Stock.new(symbol: params[:stock_symbol]).save
-
-  redirect '/'
 end
 
 delete '/stocks/:id' do |id|

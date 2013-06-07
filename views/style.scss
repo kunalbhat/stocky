@@ -34,6 +34,7 @@ h1, h2, h3, h4, h5, h6 {
 strong {
   font-size: 14px;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 p {
@@ -71,7 +72,7 @@ body {
 }
 
 .title-bar {
-  background-color: darken($color_midnight_blue, 10%);
+  background-color: darken($color_midnight_blue, 25%);
   color: $color_clouds;
   overflow: hidden;
   padding: 20px;
@@ -82,14 +83,9 @@ body {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 
-  .menu {
-    float: left;
-    text-align: left;
-    width: 50%;
-
+  .menu, .return, .add-symbol, .symbol-lookup {
     &:after {
       color: lighten($color_midnight_blue, 25%);
-      content: '\e9a1';
       cursor: pointer;
       font-family: 'SSStandard';
     }
@@ -97,40 +93,38 @@ body {
     &:hover {
       &:after { color: $color_clouds; }
     }
+  }
+
+  .menu {
+    float: left;
+    text-align: left;
+
+    &:after { content: '\e9a1'; }
   }
 
   .return {
     float: left;
     text-align: left;
-    width: 50%;
 
-    &:after {
-      color: lighten($color_midnight_blue, 25%);
-      content: '\25c5';
-      cursor: pointer;
-      font-family: 'SSStandard';
-    }
+    &:after { content: '\25c5'; }
   }
 
   .add-symbol {
     float: right;
     text-align: right;
-    width: 50%;
 
-    &:after {
-      color: lighten($color_midnight_blue, 25%);
-      content: '\002b';
-      cursor: pointer;
-      font-family: 'SSStandard';
-    }
+    &:after { content: '\002b'; }
+  }
 
-    &:hover {
-      &:after { color: $color_clouds; }
-    }
+  .symbol-lookup {
+    float: left;
+    text-align: left;
+
+    &:after { content: '\1F50E'; }
   }
 }
 
-.add-symbol-wrapper {
+.add-symbol-wrapper, .symbol-lookup-wrapper {
   background-color: darken($color_midnight_blue, 10%);
   border-bottom: 1px solid darken($color_midnight_blue, 20%);
   height: 0;
@@ -148,7 +142,7 @@ body {
   &.visible { height: 100px; }
 }
 
-.add-symbol-form, .add-portfolio-form {
+.add-symbol-form, .symbol-lookup-wrapper {
   input[type=text] {
     background-color: darken($color_midnight_blue, 10%);
     color: lighten($color_midnight_blue, 50%);
@@ -170,7 +164,7 @@ body {
   }
 }
 
-.add-symbol-form {
+.add-symbol-form, .symbol-lookup-form {
   input[type=text] {
     font-size: 36px;
     height: 100px;
@@ -370,13 +364,12 @@ body {
 .chart {
   right: 70px;
 
-  &:after { content: '\1F4CA'; }
+  &:after { content: '\1f4ca'; }
 }
 
 .symbol-chart { margin-top: 20px; }
 
 @media only screen
-and (min-width : 320px)
-and (max-width : 480px) {
+and (max-width: 320px) {
   .subdued { display: none; }
 }

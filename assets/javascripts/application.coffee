@@ -39,11 +39,11 @@ $('.nav-item').click (e) ->
   $('.stock-list').removeClass('active')
   $($('.stock-list')[index]).addClass('active')
 
+$('#symbol-lookup').click ->
+  $('.symbol-lookup-wrapper').toggleClass('visible')
+
 $('#add-symbol').click ->
   $('.add-symbol-wrapper').toggleClass('visible')
-
-$('.stock-list li').click ->
-  $(this).toggleClass('show-drawer')
 
 window.bindEvents =  ->
 
@@ -53,6 +53,9 @@ window.bindEvents =  ->
     window.stocks = _.reject(window.stocks, (symbol) -> symbol is stock)
     localStorage.setItem('stocks', window.stocks)
     $('li[name=' + stock + ']').remove()
+
+  $('.stock-list li').click ->
+    $(this).toggleClass('show-drawer')
 
   $('#add-symbol-form').submit (event) ->
     event.preventDefault()

@@ -2,6 +2,10 @@
   %nav#menu
     %a.return{ href: '/', target: '_self' }
 
+.symbol-lookup-wrapper
+  %form#symbol-lookup-form.symbol-lookup-form{ action: '/search', method: 'post' }
+    %input{ autocapitalize: 'off', autocorrect: 'off', name: 'stock_symbol', placeholder: 'e.g. GOOG', type: 'text' }
+
 %article.stock-detail
   %header{ class: "#{@symbol.status}" }
     %h3= @symbol.symbol
