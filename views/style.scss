@@ -120,7 +120,7 @@ body {
     float: left;
     text-align: left;
 
-    &:after { content: '\1F50E'; }
+    &:after { content: '\1f50e'; }
   }
 }
 
@@ -129,6 +129,7 @@ body {
   border-bottom: 1px solid darken($color_midnight_blue, 20%);
   height: 0;
   max-height: 100px;
+  overflow: hidden;
   width: 100%;
 
   -webkit-box-sizing: border-box;
@@ -142,7 +143,7 @@ body {
   &.visible { height: 100px; }
 }
 
-.add-symbol-form, .symbol-lookup-wrapper {
+.add-symbol-form, .symbol-lookup-form {
   input[type=text] {
     background-color: darken($color_midnight_blue, 10%);
     border: none;
