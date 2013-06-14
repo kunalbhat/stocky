@@ -46,7 +46,6 @@ $('#add-symbol').click ->
   $('.add-symbol-wrapper').toggleClass('visible')
 
 $('.stock-list li').click ->
-  console.log 'hi'
   $(@).toggleClass('show-drawer')
 
 window.bindEvents =  ->
