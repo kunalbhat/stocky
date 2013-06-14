@@ -45,6 +45,10 @@ $('#symbol-lookup').click ->
 $('#add-symbol').click ->
   $('.add-symbol-wrapper').toggleClass('visible')
 
+$('.stock-list li').click ->
+  console.log 'hi'
+  $(@).toggleClass('show-drawer')
+
 window.bindEvents =  ->
 
   $(document).on 'click', '.remove', (e) ->
@@ -53,9 +57,6 @@ window.bindEvents =  ->
     window.stocks = _.reject(window.stocks, (symbol) -> symbol is stock)
     localStorage.setItem('stocks', window.stocks)
     $('li[name=' + stock + ']').remove()
-
-  $('.stock-list li').click ->
-    $(this).toggleClass('show-drawer')
 
   $('#add-symbol-form').submit (event) ->
     event.preventDefault()
