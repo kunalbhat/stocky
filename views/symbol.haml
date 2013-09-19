@@ -8,14 +8,14 @@
 
 %article.stock-detail
   %header{ class: "#{@symbol.status}" }
-    %h3= @symbol.symbol
+    %h3= @symbol.company
     %p.last-price
       = @symbol.last_price
     %span.change
       = @symbol.point_change
-      = (@symbol.percent_change)
+      = @symbol.percent_change
 
-  %canvas{ class: 'symbol-chart', id: 'symbol-chart', height: '200', width: '300' }
+  %canvas{ class: 'symbol-chart', id: 'symbol-chart', height: '240', width: '320' }
 
 %script{ src: '/javascripts/chart.min.js' }
 
@@ -26,7 +26,7 @@
     labels : #{@symbol.last_prices_days.reverse},
     datasets : [
       {
-        fillColor : "rgba(151,187,205,0.25)",
+        fillColor : "rgba(151,187,205,0)",
         strokeColor : "rgba(151,187,205,1)",
         pointColor : "rgba(151,187,205,1)",
         pointStrokeColor : "#ecf0f1",

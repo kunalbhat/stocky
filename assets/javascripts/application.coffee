@@ -40,9 +40,11 @@ $('.nav-item').click (e) ->
   $($('.stock-list')[index]).addClass('active')
 
 $('#symbol-lookup').click ->
+  $('.add-symbol-wrapper').removeClass('visible')
   $('.symbol-lookup-wrapper').toggleClass('visible')
 
 $('#add-symbol').click ->
+  $('.symbol-lookup-wrapper').removeClass('visible')
   $('.add-symbol-wrapper').toggleClass('visible')
 
 $('.stock-list li').click ->

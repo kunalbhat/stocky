@@ -49,7 +49,7 @@ a { text-decoration: none; }
 
 // Global
 body {
-  background-color: darken($color_midnight_blue, 10%);
+  background-color: #95A5A6;
   color: $color_midnight_blue;
   font-family: $sans_serif;
   font-size: 16px;
@@ -207,11 +207,12 @@ body {
 
       &.loss {
         background-image: none;
-        background-color: $color_midnight_blue;
-        border-bottom: 1px solid darken($color_midnight_blue, 10%);
+        background-color: #333;
+        border-bottom: 1px solid darken($color_silver, 10%);
+        color: $color_clouds;
 
         &:hover {
-          background-color: darken($color_midnight_blue, 5%);
+          background-color: darken($color_silver, 5%);
         }
 
         &:after {
@@ -222,11 +223,11 @@ body {
 
       &.gain {
         background-image: none;
-        background-color: $color_nephritis;
-        border-bottom: 1px solid darken($color_nephritis, 10%);
+        background-color: #ECF0F1;
+        border-bottom: 1px solid darken($color_silver, 10%);
 
         &:hover {
-          background-color: darken($color_nephritis, 10%);
+          background-color: darken($color_silver, 10%);
         }
 
         &:after {
@@ -238,9 +239,9 @@ body {
   }
 
   .stock-info-wrapper {
-    background: darken($color_midnight_blue, 15%) url('images/loading.gif') no-repeat 20px 55px;
+    background: darken($color_clouds, 15%) url('images/loading.gif') no-repeat 20px 55px;
     border-bottom: 1px solid $color_wet_asphalt;
-    color: $color_clouds;
+    color: $color_wet_asphalt;
     cursor: pointer;
     display: inline-block;
     height: 100px;
@@ -274,8 +275,7 @@ body {
 .stock-detail {
   header {
     color: $color_text_inverted;
-    height: 200px;
-    padding: 30px;
+    padding: 20px;
 
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
@@ -315,7 +315,7 @@ body {
 }
 
 .last-price {
-  font-size: 64px;
+  font-size: 56px;
   font-weight: 300;
 }
 
