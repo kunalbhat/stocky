@@ -8,7 +8,7 @@
 
 %article.stock-detail
   %header{ class: "#{@symbol.status}" }
-    %h3= @symbol.company
+    %h3.company-name= @symbol.company
     %p.last-price
       = @symbol.last_price
     %span.change

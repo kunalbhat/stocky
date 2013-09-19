@@ -17,17 +17,24 @@ $color_warning:            #e74c3c; // Ruby red
 // Fonts
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
-$sans_serif: 'Open Sans', Arial, sans-serif;
+$sans_serif_font: 'Open Sans', Arial, sans-serif;
+$icon_font:       'entypo';
 
 @font-face {
-  font-family: 'SSStandard';
-  src: url('webfonts/ss-standard.eot');
-  src: url('webfonts/ss-standard.eot?#iefix') format('embedded-opentype'),
-       url('webfonts/ss-standard.woff') format('woff'),
-       url('webfonts/ss-standard.ttf')  format('truetype'),
-       url('webfonts/ss-standard.svg#SSStandard') format('svg');
+  font-family: 'entypo';
+  src: url('webfonts/entypo.eot');
+  src: url('webfonts/entypo.eot?#iefix') format('embedded-opentype'),
+       url('webfonts/entypo.woff') format('woff'),
+       url('webfonts/entypo.ttf')  format('truetype'),
+       url('webfonts/entypo.svg#entypo') format('svg');
   font-weight: normal;
   font-style: normal;
+}
+
+// Extend icon font
+.icon-font {
+  font-family: $icon_font;
+  font-size: 21px;
 }
 
 // Typography
@@ -56,7 +63,7 @@ a { text-decoration: none; }
 body {
   background-color: $color_background_soft;
   color: $color_text_dark;
-  font-family: $sans_serif;
+  font-family: $sans_serif_font;
   font-size: 16px;
   margin: 0;
   padding: 0;
@@ -90,9 +97,10 @@ body {
 
   .menu, .return, .add-symbol, .symbol-lookup {
     &:after {
+      @extend .icon-font;
+
       color: $color_text_medium;
       cursor: pointer;
-      font-family: 'SSStandard';
     }
 
     &:hover {
@@ -100,32 +108,28 @@ body {
     }
   }
 
-  .menu {
-    float: left;
-    text-align: left;
-
-    &:after { content: '\e9a1'; }
-  }
-
   .return {
     float: left;
     text-align: left;
 
-    &:after { content: '\25c5'; }
+    &:after { content: '\e003'; }
   }
 
   .add-symbol {
     float: right;
     text-align: right;
 
-    &:after { content: '\002b'; }
+    &:after {
+      content: '\e001';
+      font-size: 28px;
+    }
   }
 
   .symbol-lookup {
     float: left;
     text-align: left;
 
-    &:after { content: '\1f50e'; }
+    &:after { content: '\e005'; }
   }
 }
 
@@ -152,7 +156,7 @@ body {
     background-color: $color_text_dark;
     border: none;
     color: $color_text_medium;
-    font-family: $sans_serif;
+    font-family: $sans_serif_font;
     font-size: 36px;
     font-weight: lighter;
     height: 100px;
@@ -166,10 +170,10 @@ body {
        -moz-box-sizing: border-box;
             box-sizing: border-box;
 
-    &::-webkit-input-placeholder { color: $color_text_medium; text-transform: none; }
-    &::-moz-placeholder          { color: $color_text_medium; text-transform: none; }
-    &:-moz-placeholder           { color: $color_text_medium; text-transform: none; }
-    &:-ms-input-placeholder      { color: $color_text_medium; text-transform: none; }
+    &::-webkit-input-placeholder { color: lighten($color_text_dark, 10%); text-transform: none; }
+    &::-moz-placeholder          { color: lighten($color_text_dark, 10%); text-transform: none; }
+    &:-moz-placeholder           { color: lighten($color_text_dark, 10%); text-transform: none; }
+    &:-ms-input-placeholder      { color: lighten($color_text_dark, 10%); text-transform: none; }
   }
 }
 
@@ -224,7 +228,7 @@ body {
           color: $color_warning;
         }
 
-        &:after { content: '\25be'; }
+        &:after { content: '\e008'; }
       }
 
       &.gain {
@@ -232,7 +236,7 @@ body {
           color: $color_success;
         }
 
-        &:after { content: '\25b4'; }
+        &:after { content: '\e009'; }
       }
     }
   }
@@ -261,7 +265,8 @@ body {
             transition: width 0.2s ease-in-out;
 
     &:after {
-      font-family: 'SSStandard';
+      @extend .icon-font;
+
       position: absolute;
       right: 20px;
       top: 40px;
@@ -321,6 +326,10 @@ body {
   font-weight: 300;
 }
 
+.company-name {
+  font-weight: 300;
+}
+
 .drawer {
   height: 100px;
   position: absolute;
@@ -342,8 +351,9 @@ body {
   width: 36px;
 
   &:after {
+    @extend .icon-font;
+
     color: $color_text_medium;
-    font-family: 'SSStandard';
   }
 
   &:hover {
@@ -354,13 +364,13 @@ body {
 .remove {
   right: 0;
 
-  &:after { content: '\2421'; }
+  &:after { content: '\e00a'; }
 }
 
 .chart {
   right: 70px;
 
-  &:after { content: '\1f4ca'; }
+  &:after { content: '\e004'; }
 }
 
 .symbol-chart { margin-top: 20px; }
