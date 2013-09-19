@@ -16,8 +16,8 @@ have it's own portfolio.
 ### License ###
 Copyright (c) 2013 Kunal Bhat
 
-twitter.com/kunalbhat
+Twitter: [@kunalbhat](twitter.com/kunalbhat)
+Site: [kunalbhat](http://kunalbhat.com)
 
-%w(kunalbhat kunalbhat.com) * "@"
-
-Released under the MIT license. See LICENSE file for details.
+Released under the [Apache](http://www.apache.org/licenses/LICENSE-2.0.html) license.
+See `LICENSE.txt` file for details.
