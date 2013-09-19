@@ -49,8 +49,8 @@ a { text-decoration: none; }
 
 // Global
 body {
-  background-color: #95A5A6;
-  color: $color_midnight_blue;
+  background-color: #f5f7f9;
+  color: #333;
   font-family: $sans_serif;
   font-size: 16px;
   margin: 0;
@@ -72,7 +72,7 @@ body {
 }
 
 .title-bar {
-  background-color: darken($color_midnight_blue, 25%);
+  background-color: #4c525c;
   color: $color_clouds;
   overflow: hidden;
   padding: 20px;
@@ -125,8 +125,8 @@ body {
 }
 
 .add-symbol-wrapper, .symbol-lookup-wrapper {
-  background-color: darken($color_midnight_blue, 10%);
-  border-bottom: 1px solid darken($color_midnight_blue, 20%);
+  background-color: #f5f7f9;
+  border-bottom: 1px solid #dfdfdf;
   height: 0;
   max-height: 100px;
   overflow: hidden;
@@ -207,23 +207,22 @@ body {
 
       &.loss {
         background-image: none;
-        background-color: #333;
+        background-color: darken($color_clouds, 10%);
         border-bottom: 1px solid darken($color_silver, 10%);
-        color: $color_clouds;
 
         &:hover {
           background-color: darken($color_silver, 5%);
         }
 
         &:after {
-          color: $color_alizarin;
+          color: #eb5d4e;
           content: '\25be';
         }
       }
 
       &.gain {
         background-image: none;
-        background-color: #ECF0F1;
+        background-color: $color_clouds;
         border-bottom: 1px solid darken($color_silver, 10%);
 
         &:hover {
@@ -231,7 +230,7 @@ body {
         }
 
         &:after {
-          color: lighten($color_emerald, 25%);
+          color: $color_emerald;
           content: '\25b4';
         }
       }
@@ -240,8 +239,8 @@ body {
 
   .stock-info-wrapper {
     background: darken($color_clouds, 15%) url('images/loading.gif') no-repeat 20px 55px;
-    border-bottom: 1px solid $color_wet_asphalt;
-    color: $color_wet_asphalt;
+    border-bottom: 1px solid #4c525c;
+    color: #4c525c;
     cursor: pointer;
     display: inline-block;
     height: 100px;
