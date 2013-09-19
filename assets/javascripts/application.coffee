@@ -54,7 +54,7 @@ window.bindEvents =  ->
 
   $(document).on 'click', '.remove', (event) ->
     event.preventDefault()
-    stock = $(e.currentTarget).attr('name')
+    stock = $(event.currentTarget).attr('name')
     window.stocks = _.reject(window.stocks, (symbol) -> symbol is stock)
     localStorage.setItem('stocks', window.stocks)
     $('li[name=' + stock + ']').remove()
@@ -78,6 +78,7 @@ window.bindEvents =  ->
 
       $.ajax({
         contentType: 'application/json',
+        type: 'GET',
         url: '/stocks',
         data: { symbol: symbol },
         dataType: 'json',
