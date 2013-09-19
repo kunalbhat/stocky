@@ -131,7 +131,6 @@ body {
 
 .add-symbol-wrapper, .symbol-lookup-wrapper {
   background-color: $color_background_soft;
-  border-bottom: 1px solid #dfdfdf;
   height: 0;
   max-height: 100px;
   overflow: hidden;
@@ -205,39 +204,35 @@ body {
     }
 
     .stock-info-wrapper {
-      &.loss em, &.gain em {
-        display: inline-block;
-        font-style: normal;
+      &.loss, &.gain {
+        background-image: none;
+        background-color: $color_background_paper;
+        border-bottom: 1px solid $color_background_light;
+
+        &:hover {
+          background-color: $color_background_light;
+        }
+
+        em {
+          display: inline-block;
+          font-style: normal;
+        }
       }
 
       &.loss {
-        background-image: none;
-        background-color: darken($color_background_light, 10%);
-        border-bottom: 1px solid darken($color_background_medium, 10%);
-
-        &:hover {
-          background-color: darken($color_background_medium, 5%);
-        }
-
-        &:after {
+        .change, &:after {
           color: $color_warning;
-          content: '\25be';
         }
+
+        &:after { content: '\25be'; }
       }
 
       &.gain {
-        background-image: none;
-        background-color: $color_text_light;
-        border-bottom: 1px solid $color_background_medium;
-
-        &:hover {
-          background-color: $color_background_medium;
-        }
-
-        &:after {
+        .change, &:after {
           color: $color_success;
-          content: '\25b4';
         }
+
+        &:after { content: '\25b4'; }
       }
     }
   }
@@ -274,7 +269,10 @@ body {
   }
 }
 
-.subdued { font-weight: 300; }
+.subdued {
+  color: $color_text_medium;
+  font-weight: 300;
+}
 
 .stock-detail {
   header {

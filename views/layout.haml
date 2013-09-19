@@ -15,10 +15,9 @@
     .container
       = yield
 
-  %script{ src: '//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js' }
+  %script{ src: '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js' }
   %script{ src: 'http://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.js' }
   %script{ src: '/javascripts/handlebar.js' }
-  %script{ src: '/javascripts/jquery.touchwipe.min.js' }
 
   %script{type: 'text/x-handlebars-template', id: 'stock-template'}
     .stock-info-wrapper{ class: '{{status}}' }
