@@ -69,7 +69,7 @@ window.bindEvents =  ->
 
       stock = {symbol: symbol, last_price: ''}
 
-      $('.stock-list').append('<li name="' + stock.symbol + '">' + template(stock) + '</li>')
+      $('.stock-list').append("<li name='" + stock.symbol + "'>" + template(stock) + "</li>")
 
       callback = (data) ->
         $($('li[name=' + symbol + ']')[0]).html(template(data))
