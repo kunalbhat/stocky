@@ -17,7 +17,7 @@ _.each window.stocks, (symbol) ->
 
   $.ajax({
     contentType: 'application/json',
-    tyoe: 'POST',
+    type: 'POST',
     url: '/stocks',
     data: { symbol: symbol },
     dataType: 'json',
