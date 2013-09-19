@@ -17,7 +17,7 @@ _.each window.stocks, (symbol) ->
 
   $.ajax({
     contentType: 'application/json',
-    type: 'POST',
+    type: 'GET',
     url: '/stocks',
     data: { symbol: symbol },
     dataType: 'json',
@@ -52,8 +52,8 @@ $('.stock-list li').click ->
 
 window.bindEvents =  ->
 
-  $(document).on 'click', '.remove', (e) ->
-    e.preventDefault()
+  $(document).on 'click', '.remove', (event) ->
+    event.preventDefault()
     stock = $(e.currentTarget).attr('name')
     window.stocks = _.reject(window.stocks, (symbol) -> symbol is stock)
     localStorage.setItem('stocks', window.stocks)
