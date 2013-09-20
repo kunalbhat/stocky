@@ -1,0 +1,14 @@
+%header.title-bar
+  #symbol-lookup.symbol-lookup
+  #add-symbol.add-symbol
+
+.add-symbol-wrapper
+  %form#add-symbol-form.add-symbol-form
+    %input{ autocapitalize: 'off', autocorrect: 'off', name: 'stock_symbol', placeholder: 'e.g. GOOG', type: 'text' }
+
+.symbol-lookup-wrapper
+  %form#symbol-lookup-form.symbol-lookup-form{ action: '/search', method: 'post' }
+    %input{ autocapitalize: 'off', autocorrect: 'off', name: 'stock_symbol', placeholder: 'e.g. GOOG', type: 'text' }
+
+#portfolios.portfolios
+  %ul.stock-list#stocks

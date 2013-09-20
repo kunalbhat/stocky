@@ -57,7 +57,13 @@ p {
   span { font-size: 18px; }
 }
 
-a { text-decoration: none; }
+a {
+  text-decoration: none;
+
+  -webkit-transition: color 0.3s;
+     -moz-transition: color 0.3s;
+          transition: color 0.3s;
+}
 
 // Global
 body {
@@ -409,5 +415,63 @@ and (max-width: 320px) {
             transition: color 0.3s;
 
     &:hover { color: #111; }
+  }
+}
+
+footer {
+  bottom: 40px;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+
+  p {
+    color: $color_text_medium;
+    font-size: 16px;
+  }
+
+  a {
+    color: inherit !important;
+
+    &:hover { color: $color_text_dark !important; }
+  }
+}
+
+.button {
+  background: $color_success;
+  border-radius: 7px;
+  color: $color_text_inverted !important;
+  display: inline-block;
+  margin-top: 60px;
+  padding: 15px;
+  text-decoration: none !important;
+
+  -webkit-transition: background-color 0.3s;
+     -moz-transition: background-color 0.3s;
+          transition: background-color 0.3s;
+
+  &:hover {
+    background: darken($color_success, 10%);
+  }
+}
+
+.banner {
+  background: $color_background_paper url('images/ios_hero_image-medium.png') no-repeat 30% center;
+  height: 700px;
+
+  h1 {
+    color: $color_success;
+  }
+}
+
+.message {
+  position: absolute;
+  left: 50%;
+  top: 200px;
+  width: 400px;
+
+  .download-link {
+    color: $color_text_medium;
+    font-size: 16px;
+    margin-top: 20px;
   }
 }

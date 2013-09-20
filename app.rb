@@ -15,6 +15,10 @@ get '/' do
   haml :index
 end
 
+get '/portfolio' do
+  haml :portfolio
+end
+
 post '/search' do
   @symbol = StockInfo.new(params[:stock_symbol])
 
