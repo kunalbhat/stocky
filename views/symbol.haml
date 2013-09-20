@@ -26,17 +26,16 @@
     labels : #{@symbol.last_prices_days.reverse},
     datasets : [
       {
-        fillColor : "rgba(151,187,205,0.3)",
-        strokeColor : "rgba(151,187,205,1)",
-        pointColor : "rgba(151,187,205,1)",
-        pointStrokeColor : "rgba(151,187,205,1)",
-        pointDotStrokeWidth : 0,
-        datasetStroke : false,
-        scaleShowGridLines : false,
-        animation : false,
+        fillColor : "rgba(220,220,220,0.5)",
+        strokeColor : "rgba(0,0,0,1)",
         data : #{@symbol.last_prices.reverse}
       }
     ]
   }
 
-  var myNewChart = new Chart(ctx).Line(data);
+  var options = {
+    bezierCurve : false,
+    pointDot : false
+  }
+
+  var myNewChart = new Chart(ctx).Line(data, options);
