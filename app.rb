@@ -12,7 +12,7 @@ get '/style.css' do
 end
 
 get '/' do
-  haml :show
+  haml :index
 end
 
 post '/search' do

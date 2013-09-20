@@ -86,8 +86,8 @@ body {
 .title-bar {
   background-color: $color_background_dark;
   color: $color_text_light;
+  height: 64px;
   overflow: hidden;
-  padding: 20px;
   position: relative;
   width: 100%;
 
@@ -95,7 +95,7 @@ body {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 
-  .menu, .return, .add-symbol, .symbol-lookup {
+  .return, .add-symbol, .symbol-lookup {
     &:after {
       @extend .icon-font;
 
@@ -108,16 +108,26 @@ body {
     }
   }
 
-  .return {
-    float: left;
-    text-align: left;
+  .return, .add-symbol, .symbol-lookup {
+    height: 64px;
+    line-height: 60px;
+    position: absolute;
+    text-align: center;
+    width: 64px;
+  }
 
-    &:after { content: '\e003'; }
+  .return {
+    left: 0;
+
+    &:after {
+      content: '\e003';
+      left: -5px;
+      position: relative;
+    }
   }
 
   .add-symbol {
-    float: right;
-    text-align: right;
+    right: 0;
 
     &:after {
       content: '\e001';
@@ -126,10 +136,12 @@ body {
   }
 
   .symbol-lookup {
-    float: left;
-    text-align: left;
+    left: 0;
+    top: 2px;
 
-    &:after { content: '\e005'; }
+    &:after {
+      content: '\e005';
+    }
   }
 }
 
