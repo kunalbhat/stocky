@@ -37,3 +37,7 @@ delete '/stocks/:id' do |id|
     stock.destroy
   end
 end
+
+not_found do
+  haml :'404'
+end
