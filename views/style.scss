@@ -377,3 +377,25 @@ body {
 and (max-width: 320px) {
   .subdued { display: none; }
 }
+
+.wrapper {
+  margin-top: 200px;
+  text-align: center;
+
+  img { margin-bottom: 40px; }
+
+  h2 { margin-bottom: 10px; }
+
+  p { font-size: 18px; }
+
+  a {
+    color: #666;
+    text-decoration: underline;
+
+    -webkit-transition: color 0.3s;
+       -moz-transition: color 0.3s;
+            transition: color 0.3s;
+
+    &:hover { color: #111; }
+  }
+}
