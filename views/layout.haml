@@ -5,6 +5,9 @@
     %meta{ name: 'viewport', content: 'initial-scale=1.0, maximum-scale=1.0' }
     %meta{ name: 'apple-mobile-web-app-capable', content: 'yes' }
     %link{ href: '/favicon.ico', rel: 'shortcut icon' }
+    %link{ rel:'apple-touch-startup-image',
+      media: '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)',
+      href: 'apple-touch-startup-image-640x1096.png' }
     %link{ rel: 'apple-touch-startup-image', href: 'apple-touch-startup-image-640x920.png' }
     %link{ href: '/touch-icon-iphone.png', rel: 'apple-touch-icon-precomposed' }
     %link{ href: '/touch-icon-ipad.png', rel: 'apple-touch-icon-precomposed', sizes: '72x72' }
@@ -34,7 +37,7 @@
 
   %script{src: '/javascripts/application.js'}
 
-  :coffee
+  :coffeescript
     $(document).on 'click', 'a', (event) ->
       event.preventDefault()
       location.href = $(event.target).attr('href')
