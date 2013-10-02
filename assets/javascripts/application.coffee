@@ -39,13 +39,21 @@ window.bindEvents =  ->
 
   $(document).on 'click', '.remove', (event) ->
     event.preventDefault()
+
     stock = $(event.currentTarget).attr('name')
+
+    removeSymbol(stock)
+
+  removeSymbol = (symbol) ->
+    stock = symbol
+
     window.stocks = _.reject(window.stocks, (symbol) -> symbol is stock)
     localStorage.setItem('stocks', window.stocks)
     $('li[name=' + stock + ']').remove()
 
   $('#add-symbol-form').submit (event) ->
     event.preventDefault()
+
     symbol = $(this).find('input')[0].value
 
     unless _.include(window.stocks, symbol)
@@ -61,13 +69,18 @@ window.bindEvents =  ->
         $('.stock-list').append()
         $('#add-symbol-form input').val('')
 
+      failure = (data) ->
+        alert "This symbol does not exist"
+        removeSymbol(symbol)
+
       $.ajax({
         contentType: 'application/json',
         type: 'GET',
         url: '/stocks',
         data: { symbol: symbol },
         dataType: 'json',
-        success: callback
+        success: callback,
+        error: failure
       })
 
       window.bindEvents()
