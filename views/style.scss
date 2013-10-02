@@ -199,8 +199,6 @@ body {
   margin: 0;
   padding: 0;
 
-  &:not(.active) { display: none; }
-
   li {
     background: transparent;
     height: 100px;

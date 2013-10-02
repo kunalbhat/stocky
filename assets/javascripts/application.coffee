@@ -24,21 +24,6 @@ _.each window.stocks, (symbol) ->
     success: callback
   })
 
-$stockList = $('.stock-list')
-$($stockList[0]).addClass('active')
-
-$($('.nav-item')[0]).addClass('active')
-
-$('.nav-item').click (e) ->
-  e.preventDefault()
-  index = $(@).index()
-
-  $('.nav-item').removeClass('active')
-  $(@).addClass('active')
-
-  $('.stock-list').removeClass('active')
-  $($('.stock-list')[index]).addClass('active')
-
 $('#symbol-lookup').click ->
   $('.add-symbol-wrapper').removeClass('visible')
   $('.symbol-lookup-wrapper').toggleClass('visible')
