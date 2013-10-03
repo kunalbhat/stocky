@@ -4,6 +4,7 @@ require 'json'
 Bundler.require
 
 require_relative 'services/stock_info'
+require_relative 'decorators/stocklist_decorator'
 
 use Rack::Coffee, root: 'assets', urls: '/javascripts'
 
@@ -16,6 +17,8 @@ get '/' do
 end
 
 get '/portfolio' do
+  @decorator = StockListDecorator.new
+
   haml :portfolio
 end
 
