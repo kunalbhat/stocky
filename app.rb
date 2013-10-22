@@ -36,6 +36,12 @@ end
 get '/:symbol' do
   @symbol = StockInfo.new(params[:symbol])
 
+  @transaction_type = 'Buy'
+  @shares_owned = 250
+  @purchase_date = Date.new(2013, 6, 28)
+  @price_per_share = 24.085
+  @commission = 9.99
+
   haml :symbol
 end
 

@@ -15,6 +15,14 @@
       = @symbol.point_change
       = @symbol.percent_change
 
+    - @cost_basis = @price_per_share.to_f * @shares_owned.to_f - @commission
+    - @market_value = @symbol.last_price.to_f * @shares_owned.to_f - @commission
+    - @gain = @market_value - @cost_basis
+
+    %p Cost Basis: #{@cost_basis}
+    %p Market Value: #{@market_value}
+    %p Gain: #{@gain}
+
   %canvas{ class: 'symbol-chart', id: 'symbol-chart', height: '240', width: '320' }
 
 %script{ src: '/javascripts/chart.min.js' }
