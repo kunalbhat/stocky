@@ -46,3 +46,4 @@ design/
 bin
 vendor/ruby
 .bundle
+.env
