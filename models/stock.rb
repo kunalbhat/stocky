@@ -12,6 +12,6 @@ class Stock
   property :commission,         Float
   property :notes,              Text
   property :created_at,         DateTime
-
-  DataMapper.auto_upgrade!
 end
+
+DataMapper.finalize.auto_upgrade!
