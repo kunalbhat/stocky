@@ -27,14 +27,15 @@ class StockInfo
   end
 
   def company
-    @_company ||= MarketBeat.company symbol
+    data = YahooFinance.quotes([symbol], [:name])
+
+    company = data[0].name.delete! '"'
+
+    @_company ||= company
   end
 
   def quotes
-    today          = Date.today
-    start_of_week  = today - 10
-
-    @_quotes ||= MarketBeat.quotes(symbol, start_of_week, today)
+    @_quotes ||= YahooFinance.historical_quotes([symbol], Time::now-(24*60*60*10), Time::now)
   end
 
   def status
@@ -42,24 +43,26 @@ class StockInfo
   end
 
   def point_change
-    change_and_percent_change.first
+    data = YahooFinance.quotes([symbol], [:change])
+
+    @_point_change ||= data[0].change
   end
 
   def percent_change
-    change_and_percent_change.last
+    data = YahooFinance.quotes([symbol], [:change_in_percent])
+
+    @_percent_change ||= data[0].change_in_percent.delete! '"'
   end
 
   def last_price
-    @_last_trade_price ||= MarketBeat.last_trade_real_time symbol
+    data = YahooFinance.quotes([symbol], [:last_trade_price])
+
+    @_last_trade_price ||= data[0].last_trade_price
   end
 
   def opening_price
-    @_opening_price ||= MarketBeat.opening_price symbol
-  end
+    data = YahooFinance.quotes([symbol], [:open])
 
-  private
-
-  def change_and_percent_change
-    @_change_and_percent_change ||= MarketBeat.change_and_percent_change symbol
+    @_opening_price ||= data[0].open
   end
 end
