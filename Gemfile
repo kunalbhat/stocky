@@ -6,12 +6,12 @@ gem 'puma'
 
 group :web do
   gem 'haml'
+  gem 'rack-coffee'
   gem 'sinatra'
   gem 'sass'
   gem 'yahoo-finance'
 end
 
 group :development do
-  gem 'rack-coffee'
   gem 'sinatra-reloader'
 end
